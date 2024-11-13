@@ -1,0 +1,59 @@
+.navWr
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid grey;
+    background-color: black;
+}
+.navWr *
+{
+    color: rgb(255, 255, 255);
+}
+.linkWr
+{
+    display: flex;
+    justify-content: space-around;
+    /* border: 1 px solid red; */
+    width: 50%;
+}
+
+.active
+{
+    color: rgb(38, 0, 255);
+}
+
+.burgerMenu
+{
+    display: none;
+    font-size: 24;
+    cursor: pointer;
+}
+@media screen and (max-width:768px){
+    .linkWr
+    {
+        display: none;
+        position: absolute;
+        flex-direction: column;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: black;
+    }
+    .linkWr.show{
+        display: flex;
+    }
+    .linkWra
+    {
+        margin: 0;
+        text-align: center;
+        padding: 10px;
+        border-bottom: 1px solid white;
+
+    }
+    .burgerMenu
+    {
+        display: block;
+    }
+}
