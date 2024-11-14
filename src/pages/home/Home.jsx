@@ -2,26 +2,25 @@ import React, { useEffect, useState } from 'react';
 import './Home.css';
 import Header from '../../components/header/Header';
 import Card from '../../components/card/Card'
-import home from '../../assets/home.jpg'
 
 const Home = () => {
     const [query, setQuery] = useState("");//что будем искать
     const [data, setData] = useState(null);//хранение данных
     const [loading, setLoading] = useState(true);// если пока не загружена страница
-    const fetchAPIData =async ()=>{
+    const fetchAPIData =async ()=>{// async функция позволяет выполянть код на фоне, то есть не блокирует остальные части программы
         const url = `https://images-api.nasa.gov/search?q=${query}`;/// url API адреса
         try {
-            const response = await fetch(url);
+            const response = await fetch(url);//await ждет когда fetch запрос будет выполнен
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
-            const result = await response.json();
+            const result = await response.json(); //ждет соответсвенно когда пройдет конвертация
             console.log('Data\n', result);
-            if (result.collection && result.collection.items) {
+            if (result.collection && result.collection.items) {// если нашли
                 setData(result.collection.items.slice(0, 5));
             } else
             {
-                setData([])
+                setData([])// если не нашли то пустой
             }
             setLoading(false);
         } catch (err) {
@@ -32,11 +31,11 @@ const Home = () => {
 
     useEffect(() => {
         fetchAPIData();
-    }, []);
+    }, []);// если вставить query в [] то запрос будет постоянно отпаврляться например во время ввода будет искать совпадения сразу,
+    // поэтому лучге оставить пустой, та как будет ждать например search кнопки
 
     return (
         <div className='searchWr'>
-            {/* <h1>NASA Search Results for = {query}</h1> */}
             {loading ? (
                 <p>Loading...</p>
             ) : (
@@ -46,9 +45,10 @@ const Home = () => {
                        setQuery={setQuery}
                        fetchAPIData={fetchAPIData} 
                     />
-                    {!data && <img src={home} className='homeI' alt="home" />}
-                    {data?.length === 0 && <h1>Sorry no founds</h1> }
-                    {data && data?.length > 0  && <Card data={data}/>}
+                    {/* {!data && <img src={home} className='homeI' alt="home" />}картинка в дефолт режиме */}
+                    {!data}{/* картинка в дефолт режиме */}
+                    {data?.length === 0 && <h1>Sorry no founds</h1> } {/* если искали но нечего не нашлось совпадающего, измеряем длину ?.length*/}
+                    {data && data?.length > 0  && <Card data={data}/>} {/* все ок, выводим карту */}
                     <Card/>
                 </div>
             )}

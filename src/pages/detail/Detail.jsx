@@ -3,9 +3,10 @@ import { useLocation } from 'react-router-dom';
 import './Detail.css';
 
 const Detail = () => {
+  // useLocation используется для того чтобы узнать инфо содержащая в текущем URL
   const { state } = useLocation();
-  const { title, description, links } = state || {};
-  console.log("STATE", state);
+  const { title, description, links } = state || {}; // то что передали
+  console.log("STATE", state);// проверка что нам выдает для обьекта
   return (
     <div className='detailWr'>
       <div className='desc'>
