@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './Header.css'
 const Header = ({fetchAPIData, query,setQuery}) => {
     const handleSubmit = (e) =>
     {
@@ -7,9 +7,9 @@ const Header = ({fetchAPIData, query,setQuery}) => {
         fetchAPIData();
     }
   return (
-    <div>
-        <h1>Search </h1>
-        <div>
+    <div className='header'>
+        <h1>Search</h1>
+        <div className='input'>
             <form onSubmit={handleSubmit}>
                 <input
                 type="text"

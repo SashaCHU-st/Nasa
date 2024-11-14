@@ -2,7 +2,46 @@
 {
     color:white;
 }
+.detailWr {
+    display: flex;
+    flex-direction: row; /* Располагаем карточки в одну строку при достаточной ширине экрана */
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 32px;
+    padding: 20px;
+}
+
 .desc
 {
-    color: wheat;
+    padding: 10px;
+    background-color: rgb(48, 132, 163);
+    color: rgb(255, 255, 255);
+    width: 100%; /* Займёт 100% ширины контейнера */
+    max-width: 600px; /* Ограничиваем максимальную ширину, чтобы карточки не растягивались слишком сильно */
+    min-width: 250px; /* Минимальная ширина карточки */
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 1.2rem; /* Увеличиваем шрифт */
+    line-height: 1.5; /* Добавляем немного пространства между строками для улучшения читаемости */
 }
+
+.desc h4 {
+    font-size: 1.8rem; /* Размер заголовка чуть больше, чем основной текст */
+    margin-bottom: 8px; /* Добавляем отступ для заголовка */
+}
+
+.desc p {
+    font-size: 1.6rem; /* Размер текста для абзацев */
+
+}
+
+.desc img
+{
+    padding: 10px;
+    background-color: rgb(48, 132, 163);
+    color: rgb(255, 255, 255);
+    width: 450px;
+    border-radius: 10px;
+}
+

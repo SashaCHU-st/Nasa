@@ -2,3 +2,12 @@
 {
     color: white;
 }
+
+.homeI
+{
+    width: 100%;
+    background-repeat: no-repeat; /* Отключаем повторение */
+    background-size: cover; /* Изображение растягивается, чтобы покрыть весь экран */
+    background-position: center; /* Центрируем изображение */
+    height: 88vh; /* Устанавливаем высоту в размер окна */
+}

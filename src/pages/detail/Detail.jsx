@@ -7,17 +7,16 @@ const Detail = () => {
   const { title, description, links } = state || {};
   console.log("STATE", state);
   return (
-    <div>
-      <div className='title'>
-        <h1>{title || 'No title available'}</h1>
-      </div>
-      <div>
-        <h4>Image</h4>
-        <img src={links && links[0] && links[0].href} alt="pic" />
-      </div>
+    <div className='detailWr'>
       <div className='desc'>
+      <h1>{title || 'No title available'}</h1>
+        <img src={links && links[0] && links[0].href} alt="pic" />
         <h4>Description</h4>
-        <p>{description || 'No description available'}</p>
+        {description ? (
+          <p>{description}</p>
+        ) : (
+          <p>No description available</p>
+        )}
       </div>
     </div>
   );

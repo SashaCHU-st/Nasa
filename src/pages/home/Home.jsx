@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import './Home.css';
 import Header from '../../components/header/Header';
 import Card from '../../components/card/Card'
-import home from '../../assets/home.svg'
+import home from '../../assets/home.jpg'
 
 const Home = () => {
-    const [query, setQuery] = useState("");
-    const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [query, setQuery] = useState("");//что будем искать
+    const [data, setData] = useState(null);//хранение данных
+    const [loading, setLoading] = useState(true);// если пока не загружена страница
     const fetchAPIData =async ()=>{
-        const url = `https://images-api.nasa.gov/search?q=${query}`;
+        const url = `https://images-api.nasa.gov/search?q=${query}`;/// url API адреса
         try {
             const response = await fetch(url);
             if (!response.ok) {
@@ -20,20 +20,23 @@ const Home = () => {
             if (result.collection && result.collection.items) {
                 setData(result.collection.items.slice(0, 5));
             } else
+            {
                 setData([])
+            }
             setLoading(false);
         } catch (err) {
             console.log("Error:", err.message);
             setLoading(false);
         }
     }
+
     useEffect(() => {
         fetchAPIData();
-    }, [query]);
+    }, []);
 
     return (
         <div className='searchWr'>
-            <h1>NASA Search Results for "{query}"</h1>
+            {/* <h1>NASA Search Results for = {query}</h1> */}
             {loading ? (
                 <p>Loading...</p>
             ) : (
