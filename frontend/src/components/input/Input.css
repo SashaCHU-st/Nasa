@@ -1,0 +1,46 @@
+.input-wrapper {
+  position: relative;
+  margin: 0.3rem 0;
+}
+
+.input-field {
+  width: 90%;
+  padding: 0.5rem 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+}
+
+.input-label {
+  position: absolute;
+  top: 50%;
+  left: 0.5rem;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: #000000;
+  transition: all 0.2s ease;
+  pointer-events: none;
+}
+
+.input-label-active {
+  top: -0.6rem;
+  font-size: 0.8rem;
+  align-items: center;
+  color: #000000;
+}
+
+.input-field:focus + .input-label,
+.input-field:not(:placeholder-shown) + .input-label {
+  top: -0.6rem;
+  font-size: 1rem;
+  color: #000000;
+}
+
+.input-invalid .input-field {
+  border-color: red;
+}
+
+.error-text {
+  color: red;
+  font-size: 0.8rem;
+}

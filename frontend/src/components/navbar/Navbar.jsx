@@ -17,8 +17,8 @@ const Navbar = () => {
         </div>
         <div className={show ? "linkWr show" : "linkWr"}>
             <NavLink to="/" onClick={toggleMenu}>Home</NavLink>
-            <NavLink to="login" onClick={toggleMenu}>Login</NavLink>
-            <NavLink to="signup" onClick={toggleMenu}>SignUp</NavLink>
+            <NavLink to="login" onClick={toggleMenu}>Login/Signup</NavLink>
+            {/* <NavLink to="signup" onClick={toggleMenu}>SignUp</NavLink> */}
         </div>
         <div className="burgerMenu" onClick={toggleMenu}>&#9776;</div>
     </nav>

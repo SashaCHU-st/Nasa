@@ -45,10 +45,11 @@
     border: none;
     padding: 5px;
     border-radius: 10px;
-    width: 5rem;
+    width: 10rem;
     background-color: rgb(90, 62, 250);
     cursor: pointer;
 }
+
 
 .formWr form button:hover
 {
