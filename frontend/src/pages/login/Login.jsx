@@ -1,110 +1,13 @@
-// import React from "react";
-// import "./Login.css";
-// import {
-//   VALIDATOR_EMAIL,
-//   VALIDATOR_MINLENGTH,
-//   VALIDATOR_REQUIRE,
-// } from "../../util/validators";
-// import { useForm } from "../../hooks/form-hook";
-// import { useState } from "react";
 
-// const Login = () => {
-//   const [isLogin, setIsLogin] = useState(true);
-//   const [formState, inputHandler, setFormData] = useForm(
-//     {
-//       email: {
-//         value: "",
-//         isValid: false,
-//       },
-//       password: {
-//         value: "",
-//         isValid: false,
-//       },
-//     },
-//     false
-//   );
-
-//   const AuthSubmitHandler = (event) => {
-//     event.preventDefault();
-//     console.log(formState.inputs);
-//   };
-
-//   const switchMode = () => {
-//     if(!isLogin )
-//     {
-//       setFormData({
-//         ...formState.inputs,
-//         name: undefined
-//       },formState.inputs.email.isValid && formState.inputs.password.isValid)
-//     }
-//     else
-//     {
-//       setFormData({
-//         ...formState.input,
-//         name:{
-//           value:'',
-//           isValid:false
-//         }
-//       }, false)
-//     }
-//     setIsLogin((prevMode) => !prevMode);
-//   };
-//   return (
-//     <div className="login">
-//       <div className="formWr">
-//         <form onSubmit="">
-//           {!isLogin && (
-//             <input
-//               element="input"
-//               id="name"
-//               type="text"
-//               label="name"
-//               validators={[VALIDATOR_REQUIRE]}
-//               errorText = "Please enter the name"
-//               onInput={inputHandler}
-//             ></input>
-//           )}
-//           <div className="inputWr">
-//             <label htmlFor="name">Login form</label>
-//             <input
-//               className="window"
-//               id="email"
-//               type="email"
-//               label="E-mail"
-//               validators={[VALIDATOR_EMAIL()]}
-//               errorText="Please enter a valid email."
-//               onInput={inputHandler}
-//             />
-//             <input
-//               className="window"
-//               id="password"
-//               type="password"
-//               label="Password"
-//               validators={[VALIDATOR_MINLENGTH(5)]}
-//               errorText="Please enter password."
-//               onInput={inputHandler}
-//             />
-//           </div>
-//           <button type="submit">{isLogin ? "Login" : "SignUp"}</button>
-//           <button type="submit" inverse onClick={switchMode}>
-//             Switch to {isLogin ? "SignUp" : "Login"}
-//           </button>
-//         </form>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Login;
-
-
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from '../../context/auth-context';
 import { VALIDATOR_EMAIL, VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from '../../util/validators';
 import { useForm } from '../../hooks/form-hook';
 import Input from '../../components/input/Input'; // Assuming Input component exists
 import './Login.css';
 
 const Auth = () => {
+  const auth = useContext(AuthContext)
   const [isLoginMode, setIsLoginMode] = useState(true);
 
   const [formState, inputHandler, setFormData] = useForm(
@@ -145,10 +48,57 @@ const Auth = () => {
     setIsLoginMode((prevMode) => !prevMode);
   };
 
-  const authSubmitHandler = (event) => {
+  const authSubmitHandler = async (event) => {
     event.preventDefault();
-    console.log(formState.inputs); // Log form data
+  
+    if (isLoginMode) {
+      // Handle login
+      try {
+        const response = await fetch('http://localhost:5000/api/users/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: formState.inputs.email.value,
+            password: formState.inputs.password.value,
+          }),
+        });
+        const responseData = await response.json();
+        if (response.ok) {
+          auth.login(); // Log in the user only if the response is successful
+        } else {
+          console.error(responseData.message); // Handle error response
+        }
+      } catch (err) {
+        console.error('Login failed:', err);
+      }
+    } else {
+      // Handle signup
+      try {
+        const response = await fetch('http://localhost:5000/api/users/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: formState.inputs.name.value,
+            email: formState.inputs.email.value,
+            password: formState.inputs.password.value,
+          }),
+        });
+        const responseData = await response.json();
+        if (response.ok) {
+          auth.login(); // Log in the user only if the signup is successful
+        } else {
+          console.error(responseData.message); // Handle error response
+        }
+      } catch (err) {
+        console.error('Signup failed:', err);
+      }
+    }
   };
+  
 
   return (
     <div className="login">

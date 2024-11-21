@@ -1,28 +1,48 @@
-import React, { useState } from 'react'
-import { Link, NavLink } from "react-router-dom";
-import "./Navbar.css"
-const Navbar = () => {
-    const [show, setShow] = useState(false)
+import React, { useContext } from "react";
+import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../context/auth-context";
+import "./Navbar.css";
 
-    const toggleMenu=()=>
-    {
-        setShow(!show)
-    }
+const Navbar = () => {
+  const auth = useContext(AuthContext); // Use AuthContext here
+  const [show, setShow] = React.useState(false);
+
+  const toggleMenu = () => setShow((prevShow) => !prevShow);
+
   return (
-    <nav className='navWr'>
-        <div className='logo'>
-            <NavLink to="/">
-                <i>Sasha's universe</i>
+    <nav className="navWr">
+      <div className="logo">
+        <NavLink to="/">Sasha's Universe</NavLink>
+      </div>
+      <div className={show ? "linkWr show" : "linkWr"}>
+        <NavLink to="/" onClick={toggleMenu}>
+          Home
+        </NavLink>
+        {!auth.isLoggedIn && (
+          <NavLink to="login" onClick={toggleMenu}>
+            Login/Signup
+          </NavLink>
+        )}
+        {auth.isLoggedIn && (
+          <>
+            <NavLink to="/detail" onClick={toggleMenu}>
+              Detail
             </NavLink>
-        </div>
-        <div className={show ? "linkWr show" : "linkWr"}>
-            <NavLink to="/" onClick={toggleMenu}>Home</NavLink>
-            <NavLink to="login" onClick={toggleMenu}>Login/Signup</NavLink>
-            {/* <NavLink to="signup" onClick={toggleMenu}>SignUp</NavLink> */}
-        </div>
-        <div className="burgerMenu" onClick={toggleMenu}>&#9776;</div>
+            <NavLink onClick={() => {
+                auth.logout(); // Call the logout method
+                toggleMenu();
+              }}
+            >
+              Logout
+            </NavLink>
+          </>
+        )}
+      </div>
+      <div className="burgerMenu" onClick={toggleMenu}>
+        &#9776;
+      </div>
     </nav>
   );
 };
 
-export default Navbar
+export default Navbar;
