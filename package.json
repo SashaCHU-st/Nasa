@@ -1,0 +1,12 @@
+{
+  "name": "nasa-app",
+  "version": "1.0.0",
+  "description": "Own simple fullsatck project made with \r React\r ![React](https://img.shields.io/badge/React-JavaScript%20Library-61DAFB?style=flat&logo=react&logoColor=white)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
