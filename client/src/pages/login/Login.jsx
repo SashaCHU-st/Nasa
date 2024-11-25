@@ -70,7 +70,7 @@ const Auth = () => {
       // Handle login
       try {
         setError(null);
-        const response = await fetch("http://localhost:5000/api/users/login", {
+        const response = await fetch("https://nasa-57eq.onrender.com//api/users/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -94,7 +94,7 @@ const Auth = () => {
     } else {
       // Handle signup
       try {
-        const response = await fetch("http://localhost:5000/api/users/signup", {
+        const response = await fetch("https://nasa-57eq.onrender.com//api/users/signup", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
