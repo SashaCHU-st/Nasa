@@ -24,6 +24,10 @@
     "concurrently": "^9.1.0"
   },
   "dependencies": {
-    "body-parser": "^1.20.3"
+    "body-parser": "^1.20.3",
+    "dotenv": "^10.0.0",
+    "mongoose": "^8.8.2",
+    "mongoose-unique-validator": "^4.0.1",
+    "react-scripts": "^5.0.1"
   }
 }
