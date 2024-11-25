@@ -1,12 +1,23 @@
 {
   "name": "nasa-app",
   "version": "1.0.0",
-  "description": "Own simple fullsatck project made with \r React\r ![React](https://img.shields.io/badge/React-JavaScript%20Library-61DAFB?style=flat&logo=react&logoColor=white)",
+  "description": "Own simple fullstack project made with React and Express. \r ![React](https://img.shields.io/badge/React-JavaScript%20Library-61DAFB?style=flat&logo=react&logoColor=white)",
   "main": "index.js",
   "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "client": "npm run start --prefix client",
+    "server": "npm run start --prefix server",
+    "install-all": "npm install --prefix client && npm install --prefix server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "fullstack",
+    "react",
+    "express"
+  ],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
 }
