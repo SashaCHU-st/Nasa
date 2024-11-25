@@ -40,10 +40,11 @@ mongoose
     )
     .then(() => {
       console.log("all good");
-      const port = process.env.PORT || 5000; 
+      const port = process.env.PORT || 10000; // Использует PORT, если он доступен, иначе 10000 для локальной разработки
       app.listen(port, () => {
         console.log(`Server running on port ${port}`);
-      });      
+      });
+     
   })
   .catch((err) => {
     console.error("Connection failed:", err);
