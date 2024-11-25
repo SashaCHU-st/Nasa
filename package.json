@@ -7,7 +7,9 @@
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "client": "npm run start --prefix client",
     "server": "npm run start --prefix server",
-    "install-all": "npm install --prefix client && npm install --prefix server",
+    "install-server": "npm install --legacy-peer-deps --prefix server",
+    "install-client": "npm install --legacy-peer-deps --prefix client",
+    "install-all": "npm run install-server && npm run install-client",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
