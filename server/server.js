@@ -40,7 +40,10 @@ mongoose
     )
     .then(() => {
       console.log("all good");
-    app.listen(5000);
+      const port = process.env.PORT || 5000; // Используем PORT из окружения, если он задан
+      app.listen(port, () => {
+        console.log(`Сервер запущен на порту ${port}`);
+      });
   })
   .catch((err) => {
     console.error("Connection failed:", err);
