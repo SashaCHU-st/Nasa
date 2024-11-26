@@ -47,6 +47,10 @@ title as..., links as..., description as ...*/}
           >
             More Details
           </button>
+          <button>
+            Add to mine favorite
+          </button>
+          
         </div>
       ))}
     </div>

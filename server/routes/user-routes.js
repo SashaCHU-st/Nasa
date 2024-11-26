@@ -4,9 +4,11 @@ const userControllers = require('../controllers/user-controllers')
 const {check} = require('express-validator')
 
 
-router.get('/', (req, res) => {
-    res.status(200).json({ message: "Hello World!" });
-  });
+// router.get('/', (req, res) => {
+//     res.status(200).json({ message: "Hello World!" });
+//   });
+
+router.get('/', userControllers.getUsers);
 
 
 router.post('/signup',

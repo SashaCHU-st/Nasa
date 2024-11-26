@@ -18,8 +18,11 @@ const Navbar = () => {
         <NavLink to="/" onClick={toggleMenu}>
           Home
         </NavLink>
+        <NavLink to="/userlist" onClick={toggleMenu}>
+          User List
+        </NavLink> {/* Ссылка на страницу User List */}
         {!auth.isLoggedIn && (
-          <NavLink to="login" onClick={toggleMenu}>
+          <NavLink to="/login" onClick={toggleMenu}>
             Login/Signup
           </NavLink>
         )}
