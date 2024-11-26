@@ -6,7 +6,7 @@ import image from "../../assets/home1.jpg";
 const Detail = () => {
   // useLocation используется для того, чтобы узнать информацию, содержащуюся в текущем URL
   const { state } = useLocation();
-  const { title, description, links } = state || {}; // Извлекаем переданные данные
+  const { title, description, links } = state || {}; // Извлекаем переданные данные котрые идут с api
 
   return (
     <div className="detailWr">

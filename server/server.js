@@ -3,16 +3,17 @@ require("dotenv").config();
 const express = require("express");
 const HttpError = require("./models/https-error");
 const app = express();
-
 const UserRoutes = require("./routes/user-routes");
+
+
 app.use(bodyParser.json());
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Origin", "*");//разрешает запросы
   res.setHeader(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
+  );//загаловки которые модно отправлять
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");//запросф каотрые можно отпарвлять
   next();
 });
 
@@ -40,13 +41,13 @@ mongoose
     )
     .then(() => {
       console.log("all good");
-      const port = process.env.PORT || 5000; // Использует PORT, если он доступен, иначе 10000 для локальной разработки
+      const port = process.env.PORT || 5000; // Использует PORT, если он доступен, иначе 5000 для локальной разработки
       app.listen(port, () => {
-        console.log(`Server running on port ${port}`);
+        console.log(` port ${port}`);//удалить потом
       });
      
   })
   .catch((err) => {
-    console.error("Connection failed:", err);
+    console.error("Bad:", err);
   });
   

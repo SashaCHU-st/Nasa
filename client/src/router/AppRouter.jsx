@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState} from "react";
 import { AuthContext } from "../context/auth-context";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Navbar from "../components/navbar/Navbar";
@@ -33,12 +33,9 @@ const AppRouter = () => {
               )
             }
           />
-          
+
           {/* Страница логина */}
-          <Route
-            path="/login"
-            element={<Login />}
-          />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </AuthContext.Provider>
     </BrowserRouter>

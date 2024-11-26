@@ -1,27 +1,36 @@
 import { useCallback, useReducer } from 'react';
 
-const formReducer = (state, action) => {
+const formReducer = (state, action) => { //state текущее состояние, action как изменить
   switch (action.type) {
     case 'INPUT_CHANGE':
       let formIsValid = true;
       for (const inputId in state.inputs) {
         if (!state.inputs[inputId]) {
-          continue;
+          continue;// если поле отсутсвтует пропускаем его
         }
         if (inputId === action.inputId) {
-          formIsValid = formIsValid && action.isValid;
+          formIsValid = formIsValid && action.isValid;// Проверяем валидность текущего изменяемого поля
         } else {
-          formIsValid = formIsValid && state.inputs[inputId].isValid;
+          formIsValid = formIsValid && state.inputs[inputId].isValid;// Проверяем валидность остальных полей
         }
       }
       return {
-        ...state,
+        ...state, // копируем все что есть
         inputs: {
-          ...state.inputs,
+          ...state.inputs,// создаем новую копию обьекта
           [action.inputId]: { value: action.value, isValid: action.isValid },
+          //обновляем конкретного поля чье пришлов действие, action.value дает значение
         },
         isValid: formIsValid,
       };
+      //Пример 
+      // return {
+      //   inputs: {
+      //     name: { value: "John", isValid: true },
+      //     email: { value: "john@example.com", isValid: false }
+      //   },
+      //   isValid: false // (потому что поле email невалидно)
+      // };
     case 'SET_DATA':
       return {
         inputs: action.inputs,

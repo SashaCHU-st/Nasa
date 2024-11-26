@@ -5,13 +5,13 @@ import './Input.css';
 
 const inputReducer = (state, action) => {
   switch (action.type) {
-    case 'CHANGE':
+    case 'CHANGE': // меняет текущее щзначение на основе что выслано
       return {
         ...state,
         value: action.value,
         isValid: action.isValid,
       };
-    case 'TOUCH':
+    case 'TOUCH':// дотронуто,  в случае ошибки
       return {
         ...state,
         isTouched: true,
@@ -35,16 +35,17 @@ const Input = (props) => {
     onInput(id, value, isValid);
   }, [id, value, isValid, onInput]);
 
-  const changeHandler = (event) => {
+  const changeHandler = (event) => {// обработчик событий
     dispatch({
-      type: 'CHANGE',
-      value: event.target.value,
+      type: 'CHANGE',// вызывает dispactcj с типой CHANGE 
+      value: event.target.value,// и перелдает новвое значение
       isValid: validate(event.target.value, props.validators),
     });
   };
 
   const touchHandler = () => {
-    dispatch({ type: 'TOUCH' });
+    dispatch({ type: 'TOUCH' });// передает новое значение для того чтобы если оно длотронуто то уже модно распознаваит что ввелись оишибки если оно пустое
+    
   };
 
   return (

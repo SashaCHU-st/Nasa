@@ -42,7 +42,7 @@ const Auth = () => {
     if (!isLoginMode) {
       setFormData(
         {
-          ...formState.inputs,
+          ...formState.inputs,// сохраняем текузие поля 
           name: undefined, // Remove the name field in LOGIN mode
         },
         formState.inputs.email.isValid && formState.inputs.password.isValid
@@ -50,7 +50,7 @@ const Auth = () => {
     } else {
       setFormData(
         {
-          ...formState.inputs,
+          ...formState.inputs,// сохраняем текузие поля 
           name: {
             value: "",
             isValid: false, // Add the name field in SIGNUP mode, initially invalid

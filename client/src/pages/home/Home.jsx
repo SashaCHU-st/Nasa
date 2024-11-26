@@ -46,7 +46,7 @@ const Home = () => {
                        fetchAPIData={fetchAPIData} 
                     />
                     {/* {!data && <img src={home} className='homeI' alt="home" />}картинка в дефолт режиме */}
-                    {!data}{/* картинка в дефолт режиме */}
+                    {/* {!data}картинка в дефолт режиме */}
                     {data?.length === 0 && <h1>Sorry no founds</h1> } {/* если искали но нечего не нашлось совпадающего, измеряем длину ?.length*/}
                     {data && data?.length > 0  && <Card data={data}/>} {/* все ок, выводим карту */}
                     <Card/>
