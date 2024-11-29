@@ -11,6 +11,20 @@ also add some more features
 
 I am not good at design, so design looks as simple as possible
 
+# What works now:
+## When not logged in:
+- Can see the default page, just main info about this project;
+- at Home page can see list of registered users;
+- Login or signup
+
+## When logged in:
+- search something from NASA API;
+- add to favorite;
+- check details;
+- remove from favorite;
+
+
+
 | Feature | done? | 
 |----------|----------|
 | **Fixed** | 🟢|
