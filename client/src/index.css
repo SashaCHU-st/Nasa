@@ -1,0 +1,23 @@
+*{
+  margin :0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  text-decoration: none;
+}
+
+body
+{
+  background-image: url('assets/home.jpg');
+  margin: 0;
+  padding: 0;
+  height: 100vh; /* Высота на весь экран */
+  background-size: cover; /* Растягивает изображение на весь экран */
+  background-position: center; /* Центрирует изображение */
+  background-repeat: no-repeat; /* Не повторять изображение */
+  background-color: black;
+}
+.appWrapper
+{
+  text-align: center;
+}

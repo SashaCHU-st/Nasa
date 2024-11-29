@@ -1,0 +1,17 @@
+.default-message {
+    font-size: 1.2rem;
+    color: #333;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 50px auto;
+    width: 80%;
+    max-width: 600px;
+  }
+  
+  .default-message h2 {
+    margin: 0;
+    line-height: 1.6;
+  }
