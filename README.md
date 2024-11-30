@@ -40,3 +40,4 @@ I am not good at design, so design looks as simple as possible
 | Add update, create notes for afvorites |  |
 | Check what other users liked articles |  |
 | Create profile for user/update password/name; + create new picture |  |
+| making pages for result|  |
