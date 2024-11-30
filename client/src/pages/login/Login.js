@@ -71,7 +71,8 @@ const Auth = () => {
       // Handle login
       try {
         setError(null);
-        const response = await fetch("https://nasa-79xl.onrender.com/api/users/login", {
+       const response = await fetch("https://nasa-79xl.onrender.com/api/users/login", {
+        // const response = await fetch("http://localhost:5000/api/users/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -102,7 +103,8 @@ const Auth = () => {
     } else {
       // Handle signup
       try {
-        const response = await fetch("https://nasa-79xl.onrender.com/api/users/signup", {
+       const response = await fetch("https://nasa-79xl.onrender.com/api/users/signup", {
+        // const response = await fetch("http://localhost:5000/api/users/signup", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -117,12 +119,14 @@ const Auth = () => {
         if (!response.ok) {
           throw new Error(responseData.message);
         }
-        localStorage.getItem('token');
-        localStorage.getItem('userId'); // Assuming the user ID is returned in the response
-        // console.log("tokenS:", haha); // This will log the stored token
-        // console.log("userIdS:", hihi); // This will log the stored userId
+        localStorage.setItem('token', responseData.token);
+        localStorage.setItem('userId', responseData.userId);
+        const hihi = localStorage.getItem('token');
+        const haha = localStorage.getItem('userId'); // Assuming the user ID is returned in the response
+        console.log("tokenS:", hihi); // This will log the stored token
+        console.log("userIdS:", haha); // This will log the stored userId
         auth.login(responseData.userId, responseData.token); // Логиним пользователя
-        navigate("/search"); // Перенаправляем на исходный маршрут
+        navigate("/search"); // sending to search page
       } catch (err) {
         setError(err.message || "Something went wrong, please try again.");
         setIsLoading(false);

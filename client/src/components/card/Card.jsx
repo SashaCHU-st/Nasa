@@ -28,6 +28,8 @@ if (!image) {
       const token = localStorage.getItem('token');
       const userId = localStorage.getItem('userId');
 
+      console.log("TOKEN", token)
+      console.log("USER",userId)
       if (!userId || !token) {
         alert('User not logged in. Please log in and try again.');
         return;
@@ -35,7 +37,8 @@ if (!image) {
 
       // Send all article data to the backend
       const response = await axios.post(
-        `https://nasa-79xl.onrender.com/api/articles/${userId}`,
+       `https://nasa-79xl.onrender.com/api/articles/${userId}`,
+        // `http://localhost:5000/api/articles/${userId}`,
         {
           nasa_id: article.nasa_id,
           title: article.title,
