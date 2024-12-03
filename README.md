@@ -32,9 +32,11 @@ The project feels like it’s never truly finished because I keep discovering sm
 | Delete from favorite |  done|
 | Fixing isues when signup | done |
 | Fix image for details, after favorite |  |
+| Create profile for user/update password/name |  |
 |<span style="color:red;">**Some bugs**</span>  | 🔴 |
 | Go back to search page |  |
+| if login do not see login/signup page, when go back |  |
+| for profile + create new picture |  |
 | Add update, create notes for afvorites |  |
 | Check what other users liked articles |  |
-| Create profile for user/update password/name; + create new picture |  |
-| making pages for result|  |
+| making pages for result ????|  |
