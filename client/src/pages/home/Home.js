@@ -1,6 +1,7 @@
 ///Page that will just diaplaying All users and how many likes they have
 import React, { useEffect, useState } from "react";
 import UserList from '../users/UserList'
+import LoadingSpinner from "../../components/loading/LoadingSpinner";
 import './Home.css'
 
 const Home = () => {
@@ -39,6 +40,7 @@ const Home = () => {
 
     <div>
       <h1 className="h2">User List</h1>
+      {loading && <LoadingSpinner asOverlay />}
         <UserList items={users}/>
     </div>
   );
