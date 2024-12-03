@@ -31,9 +31,9 @@ The project feels like it’s never truly finished because I keep discovering sm
 | Fix picture in favorites | done |
 | Delete from favorite |  done|
 | Fixing isues when signup | done |
-| Fix image for details, after favorite |  |
-| Create profile for user/update password/name;+ create new picture |  |
-| Go back to search page |  |
+| Fix image for details, after favorite | done |
+| Create profile for user/update password/name;+ create new picture | done |
+| Go back to search page | done |
 |<span style="color:red;">**Some bugs**</span>  | 🔴 |
 | Check what other users liked articles |  |
 | for user profile + create new picture |  |
