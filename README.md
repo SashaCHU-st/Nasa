@@ -1,15 +1,12 @@
 # Write steps
 
-This is mine project that I was pratcicing to make fullstack application.
-There is still some bugs, i know, and time to time little by little I am trying to fix them;
+This is a project I worked on to practice building a full-stack application.
 
-The code is contain a lot lof comments because by doing this project, it was new for me,
-I was making notes for myself in order to learn and remember what does what. 
+There are still some bugs, which I am aware of, and from time to time, I try to fix them little by little.
 
-The project feels never ready, because always find some small issuies, and it is cool to learn how to fix them
-also add some more features
+The code contains a lot of comments because, as this was a new experience for me, I made notes to help myself learn and remember what each part does.
 
-I am not good at design, so design looks as simple as possible
+The project feels like it’s never truly finished because I keep discovering small issues. However, I enjoy learning how to fix them and adding new features along the way.
 
 # What works now:
 ## When not logged in:
@@ -40,3 +37,4 @@ I am not good at design, so design looks as simple as possible
 | Add update, create notes for afvorites |  |
 | Check what other users liked articles |  |
 | Create profile for user/update password/name; + create new picture |  |
+| making pages for result|  |
