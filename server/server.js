@@ -43,7 +43,10 @@ mongoose
     )
     .then(() => {
       console.log("all good");
-      const port = process.env.PORT || 5000; // Использует PORT, если он доступен, иначе 5000 для локальной разработки
+      const port = 
+      //process.env.PORT 
+      //|| 
+      5000; // Использует PORT, если он доступен, иначе 5000 для локальной разработки
       app.listen(port, () => {
         console.log(` port ${port}`);//удалить потом
       });

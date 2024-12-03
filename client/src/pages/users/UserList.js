@@ -1,5 +1,6 @@
 import React from "react";
 import UserItem from './UserItem';
+// import articles from "../../../../server/models/articles";
 
 const UserList = ({ items }) => {
   if (items.length === 0) {
@@ -17,7 +18,8 @@ const UserList = ({ items }) => {
           id={user.id}
           name={user.name}
           email={user.email}
-          favoritesCount={user.favoritesCount || 0} // Pass favorites count with default value 0
+          favoritesCount={user.favoritesCount || 0}
+          articles={user.favorites} // Pass favorites count with default value 0
         />
       ))}
     </ul>
