@@ -24,7 +24,7 @@ const Navbar = () => {
         {!auth.isLoggedIn && (
           <>
             <NavLink to="/" onClick={toggleMenu}> {/* Перейти на страницу Home */}
-              Home
+              User List
             </NavLink>
 
             <NavLink to="/login" onClick={toggleMenu}> {/* Перейти на страницу Login */}

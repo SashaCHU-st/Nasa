@@ -8,8 +8,8 @@ import ErrorModal from '../../components/error_component/ErrorModal';
 import Card from '../../components/card/Card';
 
 const fetchNASAData = async (query) => {
-  const apiUrl = process.env.REACT_APP_NASA_API_URL; // Get the URL from environment variable
-  const url = `${apiUrl}${query}`; // Construct the full API URL
+  const apiUrl = process.env.REACT_APP_NASA_API_URL; 
+  const url = `${apiUrl}${query}`;
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error(`HTTP error! Status: ${response.status}`);

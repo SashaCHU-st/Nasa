@@ -9,7 +9,7 @@ import Default from "../pages/default/Default";
 import Detail from "../pages/details/Detail";
 import Favorites from "../pages/favorites/Favorites";
 import Profile from "../pages/profile/Profile";
-import FavoriteArticlesPage from "../pages/userArticle/FavoriteArticlesPage"
+
 
 const AppRouter = () => {
   const auth = useContext(AuthContext); // Получаем данные из контекста
@@ -36,7 +36,6 @@ const AppRouter = () => {
         <Route path="/profile" element={auth.isLoggedIn ? <Profile /> : <Navigate to="/login"/> }/>
         <Route path="/detail" element={auth.isLoggedIn ? <Detail /> : <Navigate to="/login"/> }/>
         <Route path="/favorites" element={auth.isLoggedIn ? <Favorites /> : <Navigate to="/login"/> }/>
-        <Route path="/user/:id/favorites" element={<FavoriteArticlesPage />} />
       </Routes>
     </BrowserRouter>
   );
