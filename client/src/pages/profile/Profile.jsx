@@ -56,7 +56,7 @@ const Profile = () => {
           Authorization: `Bearer ${token}`
         }
       });
-      setSuccess('All good');
+      setSuccess('Updated');
       setError(null);
     } catch (err) {
       setError('Failed to update profile');
@@ -99,7 +99,7 @@ const Profile = () => {
               value={userData.password}
             />
             <button type="submit" disabled={!formIsValid}>
-              Update Profile
+              Update
             </button>
           </form>
         </div>
