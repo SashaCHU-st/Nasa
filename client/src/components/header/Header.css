@@ -1,41 +1,30 @@
+/* Стили для h1 */
 .header h1 {
-    /* margin-bottom: 20px; */
     margin-top: 16px;
     padding: 10px;
     display: flex;
     flex-direction: column;
-    gap:32px;
-
+    gap: 32px;
 }
 
-.input 
-{
+/* Стили для input контейнера */
+.input {
     margin-bottom: 20px;
-}
-
-.input
-{
-    /* border: 1px solid red; */
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
 }
 
-.input input{
+/* Стили для input */
+.input input {
     padding: 5px;
     border-radius: 40px;
+    width: 100%; /* Занимает всю доступную ширину */
 }
 
-.input select
-{
-    padding: 5px;
-    margin-left: 5px;
-    margin-top: 5px;
-}
-
-.input button
-{
+/* Стили для button */
+.input button {
     padding: 5px;
     margin-left: 5px;
     border: none;
@@ -44,9 +33,6 @@
     border-radius: 5px;
 }
 
-.input button:hover
-{
-
+.input button:hover {
     background-color: rgb(0, 195, 255);
-    
 }

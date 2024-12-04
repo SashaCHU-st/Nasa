@@ -10,6 +10,7 @@ import Detail from "../pages/details/Detail";
 import Favorites from "../pages/favorites/Favorites";
 import Profile from "../pages/profile/Profile";
 
+
 const AppRouter = () => {
   const auth = useContext(AuthContext); // Получаем данные из контекста
 
@@ -22,7 +23,10 @@ const AppRouter = () => {
           path="/"
           element={auth.isLoggedIn ? <Navigate to="/search" /> : <Home />}  
         />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={auth.isLoggedIn ? <Navigate to="/search" /> : <Login />} 
+        />
         
         {/* Защищённый маршрут для страницы Search */}
         <Route

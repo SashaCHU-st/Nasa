@@ -3,18 +3,33 @@ const HttpError = require("../models/http-error");
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 
+// const authJWT = (req, res, next) => {
+//   const token = req.header("Authorization")?.split(" ")[1];
+
+//   if (!token) {
+//     return res.status(401).json({ message: "Access denied. No token provided" });
+//   }
+
+//   jwt.verify(token, process.env.JWT_SECRET_KEY, (err, decoded) => {
+//     if (err) {
+//       return res.status(403).json({ message: "Invalid token" });
+//     }
+//     req.user = { userId: decoded.userId }; // add info about user in request
+//     next();
+//   });
+// };
 const authJWT = (req, res, next) => {
-  const token = req.header("Authorization")?.split(" ")[1];
+  const token = req.headers.authorization?.split(' ')[1]; // Authorization: 'Bearer TOKEN'
 
   if (!token) {
-    return res.status(401).json({ message: "Access denied. No token provided" });
+    return next(new HttpError('Access denied. No token provided', 401));
   }
 
   jwt.verify(token, process.env.JWT_SECRET_KEY, (err, decoded) => {
     if (err) {
-      return res.status(403).json({ message: "Invalid token" });
+      return next(new HttpError('Invalid token', 403));
     }
-    req.user = { userId: decoded.userId }; // add info about user in request
+    req.userData = { userId: decoded.userId }; // Add user data to request
     next();
   });
 };
@@ -31,7 +46,9 @@ const getUsers = async (req, res, next) => {
     id: user.id,
     name: user.name,
     email: user.email,
-    favoritesCount: user.favorites.length // Count of favorites
+    favoritesCount: user.favorites.length,// Count of favorites
+    favorites: user.favorites
+    
   }));
 
   res.json({ users: usersWithFavoritesCount });
@@ -111,6 +128,54 @@ const login = async (req, res, next) => {
     userId: hasUser.id  // Send userId as part of the response, not logged
   });
 };
+const getCurrentUser = async (req, res, next) => {
+  let user;
+  try {
+    user = await User.findById(req.userData.userId).select('-password'); // Exclude password
+  } catch (err) {
+    return next(new HttpError('Fetching user failed, please try again later.', 500));
+  }
+
+  if (!user) {
+    return next(new HttpError('User not found.', 404));
+  }
+
+  res.json({ user: user.toObject({ getters: true }) });
+};
+
+const updateCurrentUser = async (req, res, next) => {
+  const { name, password } = req.body;
+
+  let user;
+  try {
+    user = await User.findById(req.userData.userId);
+  } catch (err) {
+    return next(new HttpError('Fetching user failed, please try again later.', 500));
+  }
+
+  if (!user) {
+    return next(new HttpError('User not found.', 404));
+  }
+
+  if (name) {
+    user.name = name;
+  }
+
+  if (password) {
+    user.password = password; // Update password without hashing
+  }
+
+  try {
+    await user.save();
+  } catch (err) {
+    return next(new HttpError('Updating user failed, please try again later.', 500));
+  }
+
+  res.status(200).json({ message: 'User updated successfully!' });
+};
+
+exports.updateCurrentUser = updateCurrentUser;
+exports.getCurrentUser = getCurrentUser;
 
 exports.getUsers = getUsers;
 exports.createUser = createUser;

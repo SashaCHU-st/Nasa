@@ -11,7 +11,7 @@ const addFavorite = async (req, res, next) => {
   }
 
   const { nasa_id, title, description, image } = req.body;
-  const userId = req.user?.userId;
+  const userId = req.userData.userId;
 
   if (!userId) {
     return next(new HttpError('Authentication error: User ID is required.', 401));
@@ -67,7 +67,7 @@ const addFavorite = async (req, res, next) => {
 
 
 const getFavorites = async (req, res, next) => {
-  const userId = req.user.userId;
+  const userId = req.userData.userId; // Use req.userData set by authJWT middleware
 
   let user;
   try {
@@ -84,7 +84,7 @@ const getFavorites = async (req, res, next) => {
 };
 
 const deleteFavorite = async (req, res, next) => {
-  const userId = req.user.userId;
+  const userId = req.userData.userId;
   const { articleId } = req.params;
 
   let user;
@@ -110,7 +110,24 @@ const deleteFavorite = async (req, res, next) => {
 
   res.status(200).json({ message: 'Article removed from favorites.', user: user.toObject({ getters: true }) });
 };
- 
+const getUserFavorites = async (req, res, next) => {
+  const { userId } = req.params;
+
+  let user;
+  try {
+    user = await User.findById(userId).populate('favorites');
+    if (!user) {
+      return next(new HttpError('Could not find user for provided id.', 404));
+    }
+  } catch (err) {
+    console.error('Error fetching user:', err);
+    return next(new HttpError('Fetching user failed, please try again later.', 500));
+  }
+
+  res.status(200).json({ favorites: user.favorites });
+};
+
+exports.getUserFavorites = getUserFavorites;
 exports.deleteFavorite = deleteFavorite
  exports.addFavorite = addFavorite;
  exports.getFavorites = getFavorites;

@@ -8,4 +8,6 @@ router.post('/:uid', authJWT, articleControllers.addFavorite);
 router.get('/:uid/favorites', authJWT, articleControllers.getFavorites);
 router.delete('/:uid/favorites/:articleId', authJWT, articleControllers.deleteFavorite);
 
+router.get('/favorites/:userId', articleControllers.getUserFavorites);
+
 module.exports = router;

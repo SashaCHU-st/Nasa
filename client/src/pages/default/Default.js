@@ -4,7 +4,7 @@ import './Default.css';
 const Default = () => {
   return (
     <div className="default-message">
-      <h2>Hello, I am Aleksandra, and I am excited to present my full-stack project.</h2>
+      <h2>Hello, I am Aleksandra, and I am excited to present my fullstack project.</h2>
       <p>
         This project showcases my skills in building dynamic and responsive web applications. 
         Here's an overview of the technologies I used:
