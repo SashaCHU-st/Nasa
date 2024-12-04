@@ -18,12 +18,12 @@ const Navbar = () => {
   return (
     <nav className="navWr">
       <div className="logo">
-        <NavLink to="/default">Sasha's Universe</NavLink>
+        <NavLink to="/">Sasha's Universe</NavLink>
       </div>
       <div className={show ? "linkWr show" : "linkWr"}>
         {!auth.isLoggedIn && (
           <>
-            <NavLink to="/" onClick={toggleMenu}> {/* Перейти на страницу Home */}
+            <NavLink to="/default" onClick={toggleMenu}> {/* Перейти на страницу Home */}
               User List
             </NavLink>
 

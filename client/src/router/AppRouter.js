@@ -18,9 +18,9 @@ const AppRouter = () => {
     <BrowserRouter>
       <Navbar /> {/* Навигационная панель */}
       <Routes>
-        <Route path="/default" element={<Default />} />
+        <Route path="/" element={<Default />} />
         <Route
-          path="/"
+          path="/default"
           element={auth.isLoggedIn ? <Navigate to="/search" /> : <Home />}  
         />
         <Route
