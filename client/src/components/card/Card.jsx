@@ -35,7 +35,7 @@ const Card = ({ data = [] }) => {
 
       // Отправляем данные статьи на сервер
       const response = await axios.post(
-        `http://localhost:5000/api/articles/${userId}`,
+        `https://nasa-79xl.onrender.com/api/articles/${userId}`,
         {
           nasa_id: article.nasa_id,
           title: article.title,

@@ -26,8 +26,8 @@ const Favorites = () => {
         }
 
         const response = await axios.get(
-           `${url}/api/articles/${userId}/favorites`, {
-          // `http://localhost:5000/api/articles/${userId}/favorites`, {
+          //  `${url}/api/articles/${userId}/favorites`, {
+          `http://localhost:5000/api/articles/${userId}/favorites`, {
 
           headers: {
             Authorization: `Bearer ${token}`,
@@ -56,8 +56,8 @@ const Favorites = () => {
         return;
       }
 
-      await axios.delete(`${url}/api/articles/${userId}/favorites/${articleId}`, {
-      // await axios.delete(`http://localhost:5000/api/articles/${userId}/favorites/${articleId}`, {
+      // await axios.delete(`${url}/api/articles/${userId}/favorites/${articleId}`, {
+      await axios.delete(`https://nasa-79xl.onrender.com/api/articles/${userId}/favorites/${articleId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
