@@ -12,12 +12,13 @@ const Profile = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const url = process.env.BACKEND_URL; 
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         const token = localStorage.getItem('token'); // Assuming token is stored in localStorage
-        const response = await axios.get('https://nasa-79xl.onrender.com/api/users/me', {
+        const response = await axios.get(`${url}/api/users/me`, {
        // const response = await axios.get('http://localhost:5000/api/users/me', {
           headers: {
             Authorization: `Bearer ${token}`
@@ -50,7 +51,7 @@ const Profile = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token'); // Assuming token is stored in localStorage
-      await axios.patch('https://nasa-79xl.onrender.com/api/users/me', userData, {
+      await axios.patch(`$url}/api/users/me`, userData, {
  //     await axios.patch('http://localhost:5000/api/users/me', userData, {
         headers: {
           Authorization: `Bearer ${token}`
