@@ -36,7 +36,7 @@ The project feels like it’s never truly finished because I keep discovering sm
 | Create profile for user/update password/name |  done|
 | Go back to search page | done |
 | Check what other users liked articles | done |
-|<span style="color:red;">**Some bugs**</span>  | 🔴 |
+|<span style="color:red;">**Some bugs or future feature**</span>  | 🔴 |
 | for profile + create new picture |  |
 | Add update, create notes for favorites |  |
 | possible add other's users favorites to mine (after login)|  |
