@@ -10,6 +10,7 @@ const Favorites = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate(); // Initialize navigate
+  const url = process.env.BACKEND_URL;
   // const url = process.env.BACKEND_URL; 
 
   // Fetch favorite articles from the API
@@ -26,7 +27,7 @@ const Favorites = () => {
         }
 
         const response = await axios.get(
-           `https://nasa-79xl.onrender.com/api/articles/${userId}/favorites`, {
+           `${url}/api/articles/${userId}/favorites`, {
           // `http://localhost:5000/api/articles/${userId}/favorites`, {
 
           headers: {
@@ -56,7 +57,7 @@ const Favorites = () => {
         return;
       }
 
-      await axios.delete(`https://nasa-79xl.onrender.com/api/articles/${userId}/favorites/${articleId}`, {
+      await axios.delete(`${url}/api/articles/${userId}/favorites/${articleId}`, {
       // await axios.delete(`http://localhost:5000/api/articles/${userId}/favorites/${articleId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
