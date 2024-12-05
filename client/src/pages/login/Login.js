@@ -16,11 +16,12 @@ import LoadingSpinner from "../../components/loading/LoadingSpinner";
 const Auth = () => {
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
-  const url = process.env.BACKEND_URL;
+  const url = process.env.REACT_APP_BACKEND_URL;
 
   const [isLoginMode, setIsLoginMode] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
+  
 
   const [formState, inputHandler, setFormData] = useForm(
     {
@@ -69,7 +70,7 @@ const Auth = () => {
       try {
         setError(null);
       // const response = await fetch(`${url}/api/users/login`, {
-       const response = await fetch("https://nasa-79xl.onrender.com/api/users/login", {
+       const response = await fetch(`${url}/api/users/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -101,7 +102,7 @@ const Auth = () => {
       // Handle signup
       try {
         // const response = await fetch(`${url}/api/users/signup`, {
-       const response = await fetch("https://nasa-79xl.onrender.com/api/users/signup", {
+       const response = await fetch(`${url}/api/users/signup`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

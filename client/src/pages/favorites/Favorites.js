@@ -9,6 +9,7 @@ const Favorites = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate(); // Initialize navigate
+  const url = process.env.REACT_APP_BACKEND_URL;
 
   // Fetch favorite articles from the API
   useEffect(() => {
@@ -26,7 +27,7 @@ const Favorites = () => {
         const response = await axios.get(
 
           //  `${url}/api/articles/${userId}/favorites`, {
-          `https://nasa-79xl.onrender.com/api/articles/${userId}/favorites`, {
+          `${url}/api/articles/${userId}/favorites`, {
 
           headers: {
             Authorization: `Bearer ${token}`,

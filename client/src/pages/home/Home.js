@@ -6,12 +6,13 @@ const Home = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const url = process.env.REACT_APP_BACKEND_URL;
 
   // Fetch users when the component mounts
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch(`https://nasa-79xl.onrender.com/api/users/`);
+        const response = await fetch(`${url}/api/users/`);
         if (!response.ok) {
           throw new Error("Failed to fetch users");
         }

@@ -10,6 +10,7 @@ const FavoriteArticlesPage = () => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const url = process.env.REACT_APP_BACKEND_URL;
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -21,7 +22,7 @@ const FavoriteArticlesPage = () => {
 
       try {
         const token = localStorage.getItem("token"); // Assuming token is stored in localStorage
-        const response = await axios.get(`https://nasa-79xl.onrender.com/api/articles/favorites/${userId}`, {
+        const response = await axios.get(`${url}/api/articles/favorites/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
