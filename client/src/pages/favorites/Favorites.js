@@ -25,7 +25,7 @@ const Favorites = () => {
         const response = await axios.get(
 
           //  `${url}/api/articles/${userId}/favorites`, {
-          `http://localhost:5000/api/articles/${userId}/favorites`, {
+          `https://nasa-79xl.onrender.com/api/articles/${userId}/favorites`, {
 
           headers: {
             Authorization: `Bearer ${token}`,
