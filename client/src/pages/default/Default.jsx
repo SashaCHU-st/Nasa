@@ -41,7 +41,7 @@ const Default = () => {
     <li><strong>When NOT Logged In:</strong></li>
     <li><strong>Users:</strong> Displays all registered users, their information, and the number of favorite articles they like (will be updated).</li>
     <li><strong>Note:</strong> It may take some time for the database to connect. Please wait a moment and refresh the page ⏳.</li>
-    <li><strong>Login/Signup:</strong> You can log in using <strong>email: wapice@test.com, password: 12345678</strong>, or create a new account.</li>
+    <li><strong>Login/Signup:</strong> You can log in using <strong>email: wapice@test.com, password: 12345678</strong>, or create a new dummy account.</li>
     <li><strong>When Logged In:</strong></li>
     <ul>
       <li><strong>Search:</strong> Look up topics related to space, such as the moon, Mars, or anything else 🌌.</li>

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { AuthContext } from "../../components/context/auth-context";
+import { AuthContext } from "../context/auth-context";
 import { NavLink, useNavigate } from "react-router-dom"; // Используем NavLink для навигации
 import "./Navbar.css";
 
