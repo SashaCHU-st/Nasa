@@ -19,6 +19,7 @@ The project feels like it’s never truly finished because I keep discovering sm
 - add to favorite;
 - check details;
 - remove from favorite;
+- in profile can update name and password
 
 
 
