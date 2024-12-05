@@ -8,26 +8,26 @@ const ArticlesRoutes = require("./routes/article-routes")
 
 
 app.use(bodyParser.json());
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");//разрешает запросы
+app.use((req, res, next) => { // this is ned for cors
+  res.setHeader("Access-Control-Allow-Origin", "*");//allow requests
   res.setHeader(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );//загаловки которые модно отправлять
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");//запросф каотрые можно отпарвлять
+  );//titles that can be send
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");//requests that can be send
   next();
 });
 
 const mongoose = require("mongoose");
 
-app.use("/api/users", UserRoutes); // даем адрес по которому можно найти
+app.use("/api/users", UserRoutes); // giving adress where can be found smth in this case users throug /api/user...  before that liknk to website
 app.use("/api/articles", ArticlesRoutes)
-app.use((req, res, next) => {
+app.use((req, res, next) => {// in case of error not found
   const err = new HttpError("could not found ", 404);
   throw err;
 });
 
-app.use((error, req, res, next) => {
+app.use((error, req, res, next) => {// in case smth went wrong
   if (res.headersSent) {
     return next(error);
   }
@@ -35,7 +35,7 @@ app.use((error, req, res, next) => {
   res.json({
     message: error.message || "Anknown error occured!",
   });
-});
+});   
 
 mongoose
   .connect(
@@ -46,9 +46,8 @@ mongoose
       const port = 
       process.env.PORT 
       || 
-      5000; // Использует PORT, если он доступен, иначе 5000 для локальной разработки
+      5000; // in case PORT is ok use it (when it is deployed in Render) if not use 5000 ->localhost
       app.listen(port, () => {
-        console.log(` port ${port}`);//удалить потом
       });
      
   })
