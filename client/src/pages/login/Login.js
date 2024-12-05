@@ -16,10 +16,7 @@ import LoadingSpinner from "../../components/loading/LoadingSpinner";
 const Auth = () => {
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
-  // const location = useLocation();
-
-  // Сохранённый маршрут или путь по умолчанию "/"
-  // const from = location.state?.from?.pathname || "/";
+  const url = process.env.BACKEND_URL;
 
   const [isLoginMode, setIsLoginMode] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -71,8 +68,8 @@ const Auth = () => {
       // Handle login
       try {
         setError(null);
-       const response = await fetch("https://nasa-79xl.onrender.com/api/users/login", {
-        // const response = await fetch("http://localhost:5000/api/users/login", {
+      const response = await fetch(`https://nasa-79xl.onrender.com/api/users/login`, {
+      //  const response = await fetch("http://localhost:5000/api/users/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -103,8 +100,8 @@ const Auth = () => {
     } else {
       // Handle signup
       try {
-       const response = await fetch("https://nasa-79xl.onrender.com/api/users/signup", {
-        // const response = await fetch("http://localhost:5000/api/users/signup", {
+        const response = await fetch(`https://nasa-79xl.onrender.com/api/users/signup`, {
+      //  const response = await fetch("http://localhost:5000/api/users/signup", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
