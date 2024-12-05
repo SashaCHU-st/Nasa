@@ -1,8 +1,6 @@
-///Page that will just diaplaying All users and how many likes they have
-import React, { useEffect, useState } from "react";
-import UserList from '../users/UserList'
-import LoadingSpinner from "../../components/loading/LoadingSpinner";
-import './Home.css'
+import React, { useState, useEffect } from 'react';
+import UserList from '../users/UserList';
+import './Home.css';
 
 const Home = () => {
   const [users, setUsers] = useState([]);
@@ -13,8 +11,7 @@ const Home = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        // const response = await fetch(`${url}/api/users/`);
-        const response = await fetch("https://nasa-79xl.onrender.com/api/users/");
+        const response = await fetch(`https://nasa-79xl.onrender.com/api/users/`);
         if (!response.ok) {
           throw new Error("Failed to fetch users");
         }
@@ -30,19 +27,18 @@ const Home = () => {
     fetchUsers();
   }, []); // Empty dependency array means it runs once when the component mounts
 
-  if (users.length === 0) {
+  if (error) {
     return (
       <div className="center">
-        <h2>No users found</h2>
+        <h2>{error}</h2>
       </div>
     );
   }
-  return (
 
+  return (
     <div>
       <h1 className="h2">User List</h1>
-      {loading && <LoadingSpinner asOverlay />}
-        <UserList items={users}/>
+      <UserList items={users} loading={loading} />
     </div>
   );
 };

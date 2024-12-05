@@ -8,3 +8,11 @@
     justify-content: center;
     flex-wrap: wrap;
   }
+
+  .center
+{
+  color: white;         /* Makes the text white */
+  font-size: 45px;      /* Adjust the size as needed */
+  line-height: 1.5;     /* Optional: Improves readability */
+  margin: 10px 0;
+}

@@ -9,6 +9,18 @@
   gap: 32px; /* Расстояние между карточками */
 }
 
+.favorites p {
+  color: white;         /* Makes the text white */
+  font-size: 67px;      /* Adjust the size as needed */
+  line-height: 1.5;     /* Optional: Improves readability */
+  margin: 10px 0;       /* Optional: Adds space between paragraphs */
+}
+
+.error {
+  color: red;           /* Optional: Error messages in red */
+  font-size: 20px;      /* Make the error text larger */
+}
+
   
   .favorite-item {
     border: 1px solid rgb(0, 179, 255);

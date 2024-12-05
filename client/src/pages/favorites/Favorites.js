@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './Favorites.css';
+import LoadingSpinner from "../../components/loading/LoadingSpinner";
 
 const Favorites = () => {
   const [favorites, setFavorites] = useState([]);
@@ -69,27 +70,21 @@ const Favorites = () => {
   };
 
   if (loading) {
-    return <p className="loading">Loading...</p>;
+    return <LoadingSpinner asOverlay />
   }
 
-  console.log('Favorites:', favorites); // Log the favorites array
 
   return (
     <div className="favorites">
       {error && <p className="error">{error}</p>}
       {favorites.length === 0 && !error ? (
-        <p>No favorites yet! Start adding some articles.</p>
+        <p>No favorites yet!</p>
       ) : (
         <div className="card">
           {favorites.map((article) => {
-            console.log('Favorite article:', article); // Log each favorite article separately
-            console.log("Article Image URL:", article.image);
-
             return (
               <div className="cardWr" key={article._id}>
                 <h3>{article.title || 'Untitled Article'}</h3>
-                
-                {/* Check if article has an image */}
                 {article.image ? (
                   <img
                     src={article.image} // Use article.image as the source of the image

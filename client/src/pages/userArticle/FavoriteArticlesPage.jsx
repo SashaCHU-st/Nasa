@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import LoadingSpinner from "../../components/loading/LoadingSpinner";
 import "./FavoriteArticlesPage.css"; // Import CSS for styling
 
 const FavoriteArticlesPage = () => {
@@ -37,7 +38,7 @@ const FavoriteArticlesPage = () => {
   }, [userId]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <LoadingSpinner asOverlay />
   }
 
   if (error) {
@@ -57,7 +58,7 @@ const FavoriteArticlesPage = () => {
           ))}
         </div>
       ) : (
-        <p>No favorite articles to display</p>
+        <p className="not_found">No favorite articles to display</p>
       )}
     </div>
   );

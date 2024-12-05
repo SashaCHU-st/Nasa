@@ -1,8 +1,17 @@
 import React from "react";
 import UserItem from "./UserItem";
-// import articles from "../../../../server/models/articles";
+import LoadingSpinner from "../../components/loading/LoadingSpinner"; // Import LoadingSpinner
+import './UserList.css';
 
-const UserList = ({ items }) => {
+const UserList = ({ items, loading }) => {
+  if (loading) {
+    return (
+      <div className="center">
+        <LoadingSpinner asOverlay />
+      </div>
+    );
+  }
+
   if (items.length === 0) {
     return (
       <div className="center">
@@ -10,6 +19,7 @@ const UserList = ({ items }) => {
       </div>
     );
   }
+
   return (
     <ul className="users-list">
       {items.map((user) => (
