@@ -15,7 +15,6 @@
 {
     display: flex;
     justify-content: space-around;
-    /* border: 1 px solid red; */
     width: 50%;
 }
 
@@ -26,17 +25,17 @@
 }
 
 .linkWr a {
-    padding: 10px 16px; /* Adds space inside each link */
-    border: 1px solid transparent; /* Default no visible border */
-    border-radius: 4px; /* Makes the box slightly rounded */
-    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    padding: 10px 16px;
+    border: 1px solid transparent; 
+    border-radius: 4px; 
+    transition: all 0.3s ease; 
 }
 
 .linkWr a:hover, 
 .linkWr a.active {
-    color: rgb(38, 0, 255); /* Active or hover text color */
-    border: 1px solid rgb(0, 153, 255); /* Box border on hover or active */
-    background-color: rgb(103, 174, 255); /* Light background highlight */
+    color: rgb(38, 0, 255); 
+    border: 1px solid rgb(0, 153, 255); 
+    background-color: rgb(103, 174, 255); 
 }
 
 .burgerMenu

@@ -1,24 +1,24 @@
 .favorites {
   padding: 20px;
   border-radius: 10px;
-  max-width: 1200px; /* Увеличьте максимальную ширину для большего пространства */
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  justify-content: center; /* Центрирование карточек */
-  flex-wrap: wrap; /* Позволяет переносить карточки на новую строку */
-  gap: 32px; /* Расстояние между карточками */
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 32px;
 }
 
 .favorites p {
-  color: white;         /* Makes the text white */
-  font-size: 67px;      /* Adjust the size as needed */
-  line-height: 1.5;     /* Optional: Improves readability */
-  margin: 10px 0;       /* Optional: Adds space between paragraphs */
+  color: white;
+  font-size: 67px;
+  line-height: 1.5;
+  margin: 10px 0;
 }
 
 .error {
-  color: red;           /* Optional: Error messages in red */
-  font-size: 20px;      /* Make the error text larger */
+  color: red;
+  font-size: 20px;
 }
 
   
@@ -70,14 +70,13 @@
     color: rgb(255, 255, 255);
   }
   
-  /* Mobile responsiveness */
   @media (max-width: 768px) {
     .favorites {
-      gap: 20px; /* Smaller gap between items on smaller screens */
+      gap: 20px;
     }
   
     .favorite-item {
-      max-width: 45%; /* Make the cards take up 45% of the screen width on medium screens */
+      max-width: 45%;
     }
   }
   
@@ -87,12 +86,12 @@
     }
   
     .favorite-item {
-      max-width: 100%; /* Each card takes up the full width of the screen */
+      max-width: 100%; 
       padding: 12px;
     }
   
     .favorite-item img {
-      width: 150px; /* Resize the images on small screens */
+      width: 150px;
     }
   }
   

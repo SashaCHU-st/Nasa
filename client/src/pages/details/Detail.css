@@ -4,7 +4,7 @@
 
 .detailWr {
     display: flex;
-    flex-direction: row; /* Располагаем карточки в одну строку при достаточной ширине экрана */
+    flex-direction: row;
     justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
@@ -16,22 +16,22 @@
     padding: 10px;
     background-color: rgb(0, 0, 0);
     color: rgb(255, 255, 255);
-    width: 100%; /* Займёт 100% ширины контейнера */
-    max-width: 600px; /* Ограничиваем максимальную ширину, чтобы карточки не растягивались слишком сильно */
-    min-width: 250px; /* Минимальная ширина карточки */
+    width: 100%;
+    max-width: 600px; 
+    min-width: 250px; 
     border-radius: 10px;
     box-sizing: border-box;
-    font-size: 1rem; /* Увеличиваем шрифт */
-    line-height: 1.5; /* Добавляем немного пространства между строками для улучшения читаемости */
+    font-size: 1rem;
+    line-height: 1.5; 
 }
 
 .desc h4 {
-    font-size: 1.8rem; /* Размер заголовка чуть больше, чем основной текст */
-    margin-bottom: 8px; /* Добавляем отступ для заголовка */
+    font-size: 1.8rem; 
+    margin-bottom: 8px; 
 }
 
 .desc p {
-    font-size: 1.2rem; /* Размер текста для абзацев */
+    font-size: 1.2rem;
 }
 
 .desc img {

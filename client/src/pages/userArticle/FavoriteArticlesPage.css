@@ -10,9 +10,9 @@ h1 {
 }
 .not_found
 {
-  color: white;         /* Makes the text white */
-  font-size: 67px;      /* Adjust the size as needed */
-  line-height: 1.5;     /* Optional: Improves readability */
+  color: white;
+  font-size: 67px;
+  line-height: 1.5;
   margin: 10px 0;
 }
 .articles-container {

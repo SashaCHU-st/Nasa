@@ -4,12 +4,11 @@
   margin: 0 auto;
   padding: 20px;
   border-radius: 5px;
-  /* Centering using flexbox */
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); */
+
 }
 
 .profile h2 {

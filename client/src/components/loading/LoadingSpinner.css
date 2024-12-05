@@ -1,14 +1,14 @@
 .spinner-overlay {
-  position: fixed; /* Чтобы зафиксировать спиннер над всем */
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100vw; /* Полная ширина окна */
-  height: 100vh; /* Полная высота окна */
-  background: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный фон */
-  display: flex; /* Центровка спиннера */
+  width: 100vw; 
+  height: 100vh; 
+  background: rgba(0, 0, 0, 0.5); 
+  display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999; /* Поверх всего */
+  z-index: 9999; 
 }
 
 .spinner {

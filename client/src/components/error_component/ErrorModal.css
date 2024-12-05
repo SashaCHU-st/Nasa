@@ -8,8 +8,7 @@
     background: rgba(0, 0, 0, 0.5);
     z-index: 10;
   }
-  
-  /* Контейнер для сообщения */
+
   .error-modal__content {
     position: fixed;
     top: 50%;
@@ -24,7 +23,6 @@
     z-index: 11;
   }
   
-  /* Заголовок */
   .error-modal__header {
     background: #206aff;
     color: white;
@@ -34,13 +32,12 @@
     border-top-right-radius: 8px;
   }
   
-  /* Тело сообщения */
+
   .error-modal__body {
     padding: 1rem;
     text-align: center;
   }
   
-  /* Футер */
   .error-modal__footer {
     text-align: center;
     padding: 0.5rem;

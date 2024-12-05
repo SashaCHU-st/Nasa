@@ -40,7 +40,6 @@
 }
 
 .card{
-    /* border: 1px solid red; */
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -49,18 +48,18 @@
 
 @media (max-width: 768px) {
     .cardWr {
-        max-width: 90%; /* На экранах меньше 768px карточки будут занимать 90% ширины */
+        max-width: 90%;
     }
 
     .card {
-        gap: 20px; /* Уменьшаем промежутки между карточками на маленьких экранах */
+        gap: 20px; 
     }
 }
 
 @media (max-width: 480px) {
     .cardWr {
-        max-width: 100%; /* Карточки будут занимать всю ширину экрана на самых маленьких экранах */
-        padding: 12px; /* Уменьшаем внутренние отступы */
+        max-width: 100%; 
+        padding: 12px;
     }
 
     .card {
