@@ -1,6 +1,6 @@
 # Write steps
 
-This is a project I worked on to practice building a full-stack application.
+This is a project I worked on to practice building a full stack application.
 
 There are still some bugs, which I am aware of, and from time to time, I try to fix them little by little.
 
@@ -31,12 +31,11 @@ The project feels like it’s never truly finished because I keep discovering sm
 | Fix picture in favorites | done |
 | Delete from favorite |  done|
 | Fixing isues when signup | done |
-| Fix image for details, after favorite |  |
-| Create profile for user/update password/name |  |
+| Fix image for details, after favorite | done |
+| Create profile for user/update password/name |  done|
+| Go back to search page | done |
+| Check what other users liked articles | done |
 |<span style="color:red;">**Some bugs**</span>  | 🔴 |
-| Go back to search page |  |
-| if login do not see login/signup page, when go back |  |
 | for profile + create new picture |  |
-| Add update, create notes for afvorites |  |
-| Check what other users liked articles |  |
-| making pages for result ????|  |
+| Add update, create notes for favorites |  |
+| possible add other's users favorites to mine (after login)|  |
