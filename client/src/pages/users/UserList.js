@@ -1,5 +1,5 @@
 import React from "react";
-import UserItem from './UserItem';
+import UserItem from "./UserItem";
 // import articles from "../../../../server/models/articles";
 
 const UserList = ({ items }) => {
@@ -13,14 +13,16 @@ const UserList = ({ items }) => {
   return (
     <ul className="users-list">
       {items.map((user) => (
-        <UserItem
-          key={user.id}
-          id={user.id}
-          name={user.name}
-          email={user.email}
-          favoritesCount={user.favoritesCount || 0}
-          articles={user.favorites} // Pass favorites count with default value 0
-        />
+        <div key={user.id} className="user-card">
+          <UserItem
+            key={user.id}
+            id={user.id}
+            name={user.name}
+            // email={user.email}
+            favoritesCount={user.favoritesCount || 0}
+            articles={user.favorites} // Pass favorites count with default value 0
+          />
+        </div>
       ))}
     </ul>
   );
