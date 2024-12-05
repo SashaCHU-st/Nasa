@@ -6,7 +6,6 @@ import axios from 'axios';
 const Card = ({ data = [] }) => {
   const navigate = useNavigate();
   const location = useLocation(); // Для получения состояния поиска
-  const url = process.env.BACKEND_URL;
 
   const addFavHandler = async (item, event) => {
     event.preventDefault();
@@ -36,7 +35,7 @@ const Card = ({ data = [] }) => {
 
       // Отправляем данные статьи на сервер
       const response = await axios.post(
-        `${url}/api/articles/${userId}`,
+        `https://nasa-79xl.onrender.com/api/articles/${userId}`,
      //   `http://localhost:5000/api/articles/${userId}`,
         {
           nasa_id: article.nasa_id,
