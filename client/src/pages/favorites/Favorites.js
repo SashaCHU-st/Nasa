@@ -1,16 +1,13 @@
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './Favorites.css';
-
 
 const Favorites = () => {
   const [favorites, setFavorites] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate(); // Initialize navigate
-  const url = process.env.BACKEND_URL; 
 
   // Fetch favorite articles from the API
   useEffect(() => {
@@ -26,6 +23,7 @@ const Favorites = () => {
         }
 
         const response = await axios.get(
+
           //  `${url}/api/articles/${userId}/favorites`, {
           `http://localhost:5000/api/articles/${userId}/favorites`, {
 

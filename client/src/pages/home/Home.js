@@ -8,7 +8,7 @@ const Home = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const url = process.env.BACKEND_URL; 
+
   // Fetch users when the component mounts
   useEffect(() => {
     const fetchUsers = async () => {

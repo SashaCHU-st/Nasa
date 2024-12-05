@@ -12,6 +12,7 @@ const Profile = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  // const url = process.env.BACKEND_URL; 
 
   useEffect(() => {
     const fetchUserData = async () => {
