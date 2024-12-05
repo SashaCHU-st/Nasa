@@ -56,8 +56,7 @@ const Favorites = () => {
         return;
       }
 
-      // await axios.delete(`${url}/api/articles/${userId}/favorites/${articleId}`, {
-      await axios.delete(`https://nasa-79xl.onrender.com/api/articles/${userId}/favorites/${articleId}`, {
+      await axios.delete(`${url}/api/articles/${userId}/favorites/${articleId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -65,6 +64,7 @@ const Favorites = () => {
 
       // Remove the article from the favorites state
       setFavorites((prevFavorites) => prevFavorites.filter((article) => article._id !== articleId));
+      alert('Removed from favorites');
     } catch (err) {
       setError(err.response ? err.response.data.message : 'Something went wrong');
     }

@@ -55,7 +55,8 @@ const Profile = () => {
           Authorization: `Bearer ${token}`
         }
       });
-      setSuccess('Updated');
+      // setSuccess('Updated');
+      alert('Updated')
       setError(null);
     } catch (err) {
       setError('Failed to update profile');
@@ -76,7 +77,7 @@ const Profile = () => {
         <div className="formWr">
           <form onSubmit={handleSubmit}>
             <h2>Update Profile</h2>
-            {success && <h2 className="success">{success}</h2>}
+            {success && <h2 >{success}</h2>}
             <Input
               element="input"
               id="name"

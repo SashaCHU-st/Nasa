@@ -13,6 +13,11 @@
 
 }
 
+.cardWr h3
+{
+    color:white;
+}
+
 .cardWr img {
     width: 200px;
     height: 200px; 

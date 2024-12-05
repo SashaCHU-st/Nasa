@@ -21,32 +21,44 @@ const fetchNASAData = async (query) => {
 const Search = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [query, setQuery] = useState(new URLSearchParams(location.search).get('q') || ''); // Initialize query from URL
-  const [searchTriggered, setSearchTriggered] = useState(false); // Control whether search was triggered
+
+  // Сохраняем состояние запроса и данных
+  const [inputValue, setInputValue] = useState(() => {
+    return new URLSearchParams(location.search).get('q') || '';
+  });
+  const [query, setQuery] = useState(() => {
+    return new URLSearchParams(location.search).get('q') || '';
+  });
+  const [searchTriggered, setSearchTriggered] = useState(!!query.trim());
 
   const { data, isLoading, isError, error } = useQuery(
-    ['nasaData', query], 
+    ['nasaData', query],
     () => fetchNASAData(query),
     {
-      enabled: searchTriggered, // Query only runs when search is triggered
+      enabled: searchTriggered, // Запрос выполняется только если поиск активирован
+      onSuccess: () => {
+        // Обновляем состояние после успешного выполнения запроса
+        setSearchTriggered(false);
+      },
     }
   );
 
-  // Update query in URL when search is triggered
+  // Синхронизация query и URL
   useEffect(() => {
     if (query.trim()) {
-      navigate(`?q=${query}`, { replace: true }); // Update URL with the query
+      navigate(`?q=${query}`, { replace: true });
     }
   }, [query, navigate]);
 
   const fetchAPIData = () => {
-    if (query.trim()) {
-      setSearchTriggered(true); // Trigger search
+    if (inputValue.trim()) {
+      setQuery(inputValue); // Обновляем query
+      setSearchTriggered(true); // Запускаем поиск
     }
   };
 
   const errorHandler = () => {
-    // Clear any existing errors
+    // Очистка ошибок (если понадобится)
   };
 
   return (
@@ -56,20 +68,13 @@ const Search = () => {
       ) : (
         <div>
           <Header
-            query={query}
-            setQuery={setQuery}
-            fetchAPIData={fetchAPIData} // Passing fetchAPIData to Header
+            query={inputValue} // Передаем текущее значение поля
+            setQuery={setInputValue} // Обновляем поле ввода
+            fetchAPIData={fetchAPIData} // Выполняем поиск
           />
-          {/* Show error modal if there's an error */}
           {isError && <ErrorModal error={error.message} onClear={errorHandler} />}
-          {searchTriggered && (
-            <>
-              {data?.length === 0 && (
-                <h1 className="no_found">Sorry, no results found.</h1>
-              )}
-              {data && data?.length > 0 && <Card data={data} />}
-            </>
-          )}
+          {data?.length === 0 && <h1 className="no_found">Sorry, no results found.</h1>}
+          {data && data?.length > 0 && <Card data={data} />}
         </div>
       )}
     </div>

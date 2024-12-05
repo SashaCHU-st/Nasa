@@ -3,8 +3,8 @@ import './Header.css';
 
 const Header = ({ fetchAPIData, query, setQuery }) => {
   const handleSubmit = (e) => {
-    e.preventDefault(); // Останавливаем стандартное поведение формы
-    fetchAPIData(); // Вызываем функцию для запроса данных
+    e.preventDefault(); // Предотвращаем перезагрузку страницы
+    fetchAPIData(); // Вызываем поиск
   };
 
   return (
@@ -16,7 +16,7 @@ const Header = ({ fetchAPIData, query, setQuery }) => {
             type="text"
             placeholder="Start to write for example moon etc..."
             value={query}
-            onChange={(e) => setQuery(e.target.value)} // Обновляем строку поиска
+            onChange={(e) => setQuery(e.target.value)} 
           />
           <button type="submit">Search</button>
         </form>
