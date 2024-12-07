@@ -11,9 +11,9 @@ const Detail = () => {
 
   // Determine the image source:
   const imageSrc =
-    image || // Use the image passed directly
+    image ||
     (links && links[0]?.href) || // Fallback to links[0].href if available
-    defaultImage; // Use a default image if neither is available
+    defaultImage;
 
   return (
     <div className="detailWr">
