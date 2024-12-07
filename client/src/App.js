@@ -1,5 +1,4 @@
 import React from 'react'
-// import { AuthContext } from './context/auth-context'
 import AppRouter from './router/AppRouter'
 
 const App = () => {

@@ -1,5 +1,5 @@
 import React from "react";
-import "./LoadingSpinner.css"; // Подключение стилей
+import "./LoadingSpinner.css"; 
 
 const LoadingSpinner = ({ asOverlay }) => {
   return (

@@ -6,13 +6,13 @@ import "./Navbar.css";
 const Navbar = () => {
   const auth = useContext(AuthContext); // Получаем контекст авторизации
   const [show, setShow] = React.useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const toggleMenu = () => setShow((prevShow) => !prevShow);
 
   const logoutHandler = () => {
-    auth.logout();  // Выход из системы
-    navigate("/");   // После выхода перенаправляем на главную страницу
+    auth.logout();  // loggeed out
+  //  navigate("/");   // after logout to the main page, maybe not need... fix later
   };
 
   return (
@@ -23,27 +23,27 @@ const Navbar = () => {
       <div className={show ? "linkWr show" : "linkWr"}>
         {!auth.isLoggedIn && (
           <>
-            <NavLink to="/default" onClick={toggleMenu}> {/* Перейти на страницу Home */}
+            <NavLink to="/users" onClick={toggleMenu}>
               Users
             </NavLink>
 
-            <NavLink to="/login" onClick={toggleMenu}> {/* Перейти на страницу Login */}
+            <NavLink to="/login" onClick={toggleMenu}>
               Login/Signup
             </NavLink>
           </>
         )}
         {auth.isLoggedIn && (
           <>
-            <NavLink to="/search" onClick={toggleMenu}> {/* Перейти на страницу Search */}
+            <NavLink to="/search" onClick={toggleMenu}> 
               Search
             </NavLink>
-            <NavLink to="/favorites" onClick={toggleMenu}> {/* Перейти на страницу Favorites */}
+            <NavLink to="/favorites" onClick={toggleMenu}>
               Mine Favorites
             </NavLink>
-            <NavLink to="/profile" onClick={toggleMenu}> {/* Перейти на страницу Favorites */}
+            <NavLink to="/profile" onClick={toggleMenu}> 
               Profile
             </NavLink>
-            <NavLink onClick={logoutHandler}> {/* Выход из системы */}
+            <NavLink onClick={logoutHandler}> 
               Logout
             </NavLink>
           </>

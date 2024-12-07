@@ -1,72 +1,78 @@
 import React from "react";
-import { useNavigate, useLocation } from "react-router-dom"; // Используем useLocation
-import './Card.css';
-import axios from 'axios';
+import { useNavigate, useLocation } from "react-router-dom";
+import "./Card.css";
+import axios from "axios";//!!!!! axios lbararu to send http req
 
-const Card = ({ data = [] }) => {
+const Card = ({ data = [] }) => {// data has been sent from search 
   const navigate = useNavigate();
-  const location = useLocation(); // Для получения состояния поиска
+  const location = useLocation(); //info about current url and state
   const url = process.env.REACT_APP_BACKEND_URL;
   const addFavHandler = async (item, event) => {
-    event.preventDefault();
+    event.preventDefault();/// maybe not really needed?
 
-    const article = item.data[0]; // Получаем первый элемент данных статьи
-    const image = item.links && item.links[0] ? item.links[0].href : null;
+    const article = item.data[0]; // get data form api that gets from devtools 
+    const image = item.links && item.links[0] ? item.links[0].href : null;// get image, image is under data so need separate
 
+
+    /// just in case
     if (!image) {
-      console.error('No valid image found for item:', item);
-      alert('Image is missing for this article.');
+      alert("Image is missing for this article.");
       return;
     }
 
     if (!article || !article.nasa_id) {
-      alert('Invalid article. nasa_id not found.');
+      alert("Invalid article");
       return;
     }
 
     try {
-      const token = localStorage.getItem('token');
-      const userId = localStorage.getItem('userId');
+      const token = localStorage.getItem("token");
+      const userId = localStorage.getItem("userId");
 
+      /// for adding to my favorite form another users
       if (!userId || !token) {
-        alert('User not logged in. Please log in and try again.');
+        alert("User not logged in. Please log in and try again.");
         return;
       }
 
-      // Отправляем данные статьи на сервер
-      const response = await axios.post(
+      // sending to server req
+      const response = await axios.post(// axios help send post req to server to add new article
         `${url}/api/articles/${userId}`,
-
         {
           nasa_id: article.nasa_id,
           title: article.title,
           description: article.description,
-          image: image
+          image: image,
         },
         {
-          headers: { Authorization: `Bearer ${token}` }
+          headers: { Authorization: `Bearer ${token}` },
         }
       );
 
-      alert('Article added to favorites!');
+      alert("Article added to favorites!");
     } catch (err) {
-      alert(err.response ? err.response.data.message : 'Something went wrong');
+      alert(err.response ? err.response.data.message : "Something went wrong");
     }
   };
 
   return (
     <div className="card">
+             {/* 
+       data.map taken from data that comes from API
+       e.g when req is happening in DevTools can see which strcuture was given for each object
+       in this case it was item and index means the index of this object
+       that we received*/}
       {data.map((item, index) => {
         return (
           <div key={index} className="cardWr">
-            {/* Проверка на наличие title */}
+            {/* check if artcile exist if not default  */}
             {item.data && item.data[0] && item.data[0].title ? (
               <h3>{item.data[0].title}</h3>
             ) : (
               <h3>Title not available</h3>
             )}
 
-            {/* Проверка на наличие изображения */}
+            {/* if image exist */}
             {item.links && item.links[0] && item.links[0].href ? (
               <img
                 src={item.links[0].href}
@@ -77,7 +83,7 @@ const Card = ({ data = [] }) => {
               <p>No image available</p>
             )}
 
-            {/* Кнопка для перехода на страницу деталей */}
+            {/* button to details*/}
             <button
               onClick={() =>
                 navigate("/detail", {
@@ -85,16 +91,15 @@ const Card = ({ data = [] }) => {
                     title: item.data[0]?.title,
                     links: item.links,
                     description: item.data[0]?.description,
-                    query: location.state?.query, // Сохраняем query состояния
-                    searchTriggered: location.state?.searchTriggered // Сохраняем состояние поиска
-                  },
+                    query: location.state?.query, // save query staet as it is
+                    searchTriggered: location.state?.searchTriggered, // save state of the search, in case if back button
+                    },
                 })
               }
             >
               More Details
             </button>
-
-            {/* Кнопка для добавления в избранное */}
+            {/* add to fav */}
             <button onClick={(event) => addFavHandler(item, event)}>
               Add to mine favorite
             </button>

@@ -5,7 +5,7 @@ import './UserCard.css';
 const UserCard = props => {
   return (
     <div className={`cardUser ${props.className}`} style={props.style}>
-      {props.children}
+      {props.children} {/*include ALL components that comes from paerent*/}
     </div>
   );
 };

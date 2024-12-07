@@ -1,21 +1,19 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./UserItem.css";  // Use similar CSS styles for UserItem
-import image from "../../assets/dog.jpg";  // Default image
+import "./UserItem.css"; 
+import image from "../../assets/dog.jpg"; 
 import UserCard from "./UserCard";
 
 const UserItem = ({ id, name, email, favoritesCount }) => {
   const navigate = useNavigate();
-
   const handleViewArticles = () => {
-    // Navigate to a page showing favorite articles for the user, passing the userId through state
-    navigate('/shared-favorites', { state: { userId: id } });
+    navigate('/shared-favorites', { state: { userId: id } });// passing userId to check favorites for users
   };
 
   return (
     <li className="user-item">
       <UserCard className="user-item__content">
-        <img src={image} alt={name} className="user-item__image" />
+        <img src={image} alt={name} className="user-item__image" /> {/*default image for now for everyone*/}
         <div>
           <h2>{name}</h2>
           <p>{email}</p>

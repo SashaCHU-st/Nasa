@@ -22,44 +22,46 @@ const Search = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Сохраняем состояние запроса и данных
+// save what was put before even if page updated
   const [inputValue, setInputValue] = useState(() => {
-    return new URLSearchParams(location.search).get('q') || '';
+    return new URLSearchParams(location.search).get('q') || '';// for example will return "moon" in this case 
+    // URLSearchParams allow to check the parametrer. location.search req from URL. http://...../?q=moon will return moon
+    // In case I want to save q even aftaer page has been updated
   });
   const [query, setQuery] = useState(() => {
     return new URLSearchParams(location.search).get('q') || '';
   });
-  const [searchTriggered, setSearchTriggered] = useState(!!query.trim());
+  const [searchTriggered, setSearchTriggered] = useState(!!query.trim());//if triggred then set to true, if not contain from spaces
 
-  const { data, isLoading, isError, error } = useQuery(
-    ['nasaData', query],
-    () => fetchNASAData(query),
+  const { data, isLoading, isError, error } = useQuery(// async req, for example data from API
+  /// returns data, isLoading, isError, error. "automized" req succh as  data, isLoading, isError, error, cashing
+  ///
+    ['nasaData', query],// query changing =>req also will chenge
+    () => fetchNASAData(query),// function to get data
     {
-      enabled: searchTriggered, // Запрос выполняется только если поиск активирован
+      enabled: searchTriggered, // req only if search active
       onSuccess: () => {
-        // Обновляем состояние после успешного выполнения запроса
-        setSearchTriggered(false);
+        // update after succes req
+        setSearchTriggered(false);// chenge flag when req successed
       },
     }
   );
 
-  // Синхронизация query и URL
+  // Sync query и URL
   useEffect(() => {
-    if (query.trim()) {
-      navigate(`?q=${query}`, { replace: true });
+    if (query.trim()) {// delete spaces in query
+      navigate(`?q=${query}`, { replace: true });// replace means that the old route
+      // need to be replced by new, without create new history... will be fixed
     }
   }, [query, navigate]);
 
   const fetchAPIData = () => {
     if (inputValue.trim()) {
-      setQuery(inputValue); // Обновляем query
-      setSearchTriggered(true); // Запускаем поиск
+      setQuery(inputValue); // update query
+      setSearchTriggered(true); // set search
     }
   };
 
-  const errorHandler = () => {
-    // Очистка ошибок (если понадобится)
-  };
 
   return (
     <div className="searchWr">
@@ -68,11 +70,11 @@ const Search = () => {
       ) : (
         <div>
           <Header
-            query={inputValue} // Передаем текущее значение поля
-            setQuery={setInputValue} // Обновляем поле ввода
-            fetchAPIData={fetchAPIData} // Выполняем поиск
+            query={inputValue} 
+            setQuery={setInputValue}
+            fetchAPIData={fetchAPIData} 
           />
-          {isError && <ErrorModal error={error.message} onClear={errorHandler} />}
+          {isError && <ErrorModal error={error} />}{/*send thru props messge about error... will be updated*/}
           {data?.length === 0 && <h1 className="no_found">Sorry, no results found.</h1>}
           {data && data?.length > 0 && <Card data={data} />}
         </div>
@@ -82,3 +84,4 @@ const Search = () => {
 };
 
 export default Search;
+

@@ -37,10 +37,10 @@
 }
 
 .input-invalid .input-field {
-  border-color: red;
+  border-color: rgb(255, 255, 255);
 }
 
 .error-text {
-  color: red;
+  color: rgb(255, 255, 255);
   font-size: 0.8rem;
 }

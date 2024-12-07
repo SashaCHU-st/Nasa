@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import LoadingSpinner from "../../components/loading/LoadingSpinner";
-import "./FavoriteArticlesPage.css"; // Import CSS for styling
+import "./FavoriteArticlesPage.css"; 
+import ErrorModal from "../../components/error_component/ErrorModal";
 
 const FavoriteArticlesPage = () => {
   const location = useLocation();
@@ -19,9 +20,8 @@ const FavoriteArticlesPage = () => {
         setLoading(false);
         return;
       }
-
       try {
-        const token = localStorage.getItem("token"); // Assuming token is stored in localStorage
+        const token = localStorage.getItem("token"); //
         const response = await axios.get(`${url}/api/articles/favorites/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -38,16 +38,10 @@ const FavoriteArticlesPage = () => {
     fetchArticles();
   }, [userId]);
 
-  if (loading) {
-    return <LoadingSpinner asOverlay />
-  }
-
-  if (error) {
-    return <p>{error}</p>;
-  }
-
   return (
     <div className="favorites-page">
+      {loading && <LoadingSpinner asOverlay />}
+      {error && <ErrorModal error={error} />}
       <h1>Favorite Articles</h1>
       {articles.length > 0 ? (
         <div className="articles-container">

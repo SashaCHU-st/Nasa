@@ -1,6 +1,6 @@
 ///Page for login/signup users
 import React, { useState, useContext } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../components/context/auth-context";
 import {
   VALIDATOR_EMAIL,
@@ -10,55 +10,49 @@ import {
 import { useForm } from "../../hooks/form-hook";
 import Input from "../../components/input/Input";
 import "./Login.css";
-import ErrorModel from '../../components/error_component/ErrorModal';
+import ErrorModel from "../../components/error_component/ErrorModal";
 import LoadingSpinner from "../../components/loading/LoadingSpinner";
 
 const Auth = () => {
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
   const url = process.env.REACT_APP_BACKEND_URL;
-
   const [isLoginMode, setIsLoginMode] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
-  
-
-  const [formState, inputHandler, setFormData] = useForm(
+  const [formState, inputHandler, setFormData] = useForm(// custom one for following validity on each step
+  // and hadle differrnt actions such change_input and set_form
     {
-      email: {
-        value: "",
-        isValid: false,
-      },
-      password: {
-        value: "",
-        isValid: false,
-      },
+      email: { value: "", isValid: false },
+      password: { value: "", isValid: false },
     },
-    false
-  );
+    false // form is invalid from the begining
+  ); //// = state
 
   const switchModeHandler = () => {
-    if (!isLoginMode) {
+    if (!isLoginMode) {// if it is registartion
+      // set to LOGIN mode
       setFormData(
         {
-          ...formState.inputs,// сохраняем текузие поля 
+          ...formState.inputs, // save current fields
           name: undefined, // Remove the name field in LOGIN mode
         },
-        formState.inputs.email.isValid && formState.inputs.password.isValid
+        formState.inputs.email.isValid && formState.inputs.password.isValid // and check if it is field are valid
       );
     } else {
+      ///set to SignUP mode
       setFormData(
         {
-          ...formState.inputs,// сохраняем текузие поля 
+          ...formState.inputs, // save current fields
           name: {
             value: "",
-            isValid: false, // Add the name field in SIGNUP mode, initially invalid
+            isValid: false, // Add the name field in SIGNUP mode, at the begining invalid
           },
         },
         false // Reset form validity
       );
     }
-    setIsLoginMode((prevMode) => !prevMode);
+    setIsLoginMode((prevMode) => !prevMode);//changing mode
   };
 
   const authSubmitHandler = async (event) => {
@@ -66,11 +60,10 @@ const Auth = () => {
     setIsLoading(true);
 
     if (isLoginMode) {
-      // Handle login
+      // when logged mode
       try {
         setError(null);
-      // const response = await fetch(`${url}/api/users/login`, {
-       const response = await fetch(`${url}/api/users/login`, {
+        const response = await fetch(`${url}/api/users/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -81,34 +74,28 @@ const Auth = () => {
           }),
         });
         const responseData = await response.json();
-      //  console.log("Login response:", responseData);
         if (!response.ok) {
           throw new Error(responseData.message);
         }
-        localStorage.setItem('token', responseData.token);
-        localStorage.setItem('userId', responseData.userId); // Assuming the user ID is returned in the response
-        
-        // Retrieve the values to confirm they're stored correctly
-        localStorage.getItem('token');
-        localStorage.getItem('userId');
+        localStorage.setItem("token", responseData.token);
+        localStorage.setItem("userId", responseData.userId); // needed for future add fav
         setIsLoading(false);
-        auth.login(responseData.userId, responseData.token); // Логиним пользователя
-        navigate("/search"); // Перенаправляем на исходный маршрут
+        auth.login(responseData.userId, responseData.token); // loggin users with token and userid that goten url
+        navigate("/search"); // when logged in move to search
       } catch (err) {
-        setError(err.message || "Something went wrong, please try again.");
+        setError(err.message || "Something went wrong");
         setIsLoading(false);
       }
     } else {
-      // Handle signup
+      //When signup
       try {
-        // const response = await fetch(`${url}/api/users/signup`, {
-       const response = await fetch(`${url}/api/users/signup`, {
+        const response = await fetch(`${url}/api/users/signup`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            name: formState.inputs.name?.value,
+            name: formState.inputs.name.value,
             email: formState.inputs.email.value,
             password: formState.inputs.password.value,
           }),
@@ -117,30 +104,25 @@ const Auth = () => {
         if (!response.ok) {
           throw new Error(responseData.message);
         }
-        localStorage.setItem('token', responseData.token);
-        localStorage.setItem('userId', responseData.userId);
-        const hihi = localStorage.getItem('token');
-        const haha = localStorage.getItem('userId'); // Assuming the user ID is returned in the response
-        console.log("tokenS:", hihi); // This will log the stored token
-        console.log("userIdS:", haha); // This will log the stored userId
-        auth.login(responseData.userId, responseData.token); // Логиним пользователя
+        localStorage.setItem("token", responseData.token);
+        localStorage.setItem("userId", responseData.userId);
+        auth.login(responseData.userId, responseData.token); // loggin users with token and userid that goten url, neede for latwr add to favorite/delte/update
         navigate("/search"); // sending to search page
       } catch (err) {
-        setError(err.message || "Something went wrong, please try again.");
+        setError(err.message || "Something went wrong");
         setIsLoading(false);
       }
     }
   };
 
   const errorHandler = () => {
-    setError(null);
+    setError(null);// when parent will close it will set error to null
   };
 
   return (
     <React.Fragment>
       <ErrorModel error={error} onClear={errorHandler} />
       {isLoading && <LoadingSpinner asOverlay />}
-
       <div className="login">
         <div className="formWr">
           <form onSubmit={authSubmitHandler}>
@@ -173,7 +155,9 @@ const Auth = () => {
               errorText="Please enter a valid password, at least 5 characters."
               onInput={inputHandler}
             />
-            <button type="submit" disabled={!formState.isValid}>
+            <button type="submit" disabled={!formState.isValid}> {/*disables while !formState.isValid*, when bacsame valid it 
+            it will switch to active*/}
+              {/*if form is !isVAlid then the buttton is disabled */}
               {isLoginMode ? "LOGIN" : "SIGNUP"}
             </button>
             <button type="button" onClick={switchModeHandler}>

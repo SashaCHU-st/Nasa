@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import UserList from '../users/UserList';
-import './Home.css';
+import ErrorModal from '../../components/error_component/ErrorModal';
+import './Users.css';
 
-const Home = () => {
+const Users = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -26,22 +27,23 @@ const Home = () => {
     };
 
     fetchUsers();
-  }, []); // Empty dependency array means it runs once when the component mounts
+  }, []); // Empty dependency array means it runs once 
 
-  if (error) {
-    return (
-      <div className="center">
-        <h2>{error}</h2>
-      </div>
-    );
-  }
+  // if (error) {
+  //   return (
+  //     <div className="center">
+  //       <h2>{error}</h2>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div>
+      {error && <ErrorModal error={error} />}
       <h1 className="h2">User List</h1>
       <UserList items={users} loading={loading} />
     </div>
   );
 };
 
-export default Home;
+export default Users;

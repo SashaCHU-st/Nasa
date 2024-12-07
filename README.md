@@ -11,7 +11,7 @@ The project feels like it’s never truly finished because I keep discovering sm
 # What works now:
 ## When not logged in:
 - Can see the default page, just main info about this project;
-- at Home page can see list of registered users;
+- at Users page can see list of registered users;
 - Login or signup
 
 ## When logged in:

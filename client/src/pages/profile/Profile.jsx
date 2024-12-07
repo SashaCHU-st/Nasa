@@ -7,7 +7,7 @@ import ErrorModal from '../../components/error_component/ErrorModal';
 import './Profile.css';
 
 const Profile = () => {
-  const [userData, setUserData] = useState({ name: '', password: '' });
+  const [userData, setUserData] = useState({ name: '', password: '' });// init name, pass
   const [formIsValid, setFormIsValid] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -17,7 +17,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const token = localStorage.getItem('token'); // Assuming token is stored in localStorage
+        const token = localStorage.getItem('token'); 
         const response = await axios.get(`${url}/api/users/me`, {
           headers: {
             Authorization: `Bearer ${token}`
@@ -35,8 +35,8 @@ const Profile = () => {
   }, []); // Empty dependency array ensures this runs only once
 
   const inputHandler = useCallback((id, value, isValid) => {
-    setUserData((prevData) => ({
-      ...prevData,
+    setUserData((state) => ({
+      ...state,
       [id]: value
     }));
     setFormIsValid(isValid);
@@ -49,13 +49,12 @@ const Profile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const token = localStorage.getItem('token'); // Assuming token is stored in localStorage
+      const token = localStorage.getItem('token'); 
       await axios.patch(`${url}/api/users/me`, userData, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       });
-      // setSuccess('Updated');
       alert('Updated')
       setError(null);
     } catch (err) {
@@ -63,10 +62,6 @@ const Profile = () => {
       setSuccess(null);
     }
   };
-
-  if (loading) {
-    return <LoadingSpinner asOverlay />;
-  }
 
   return (
     <React.Fragment>

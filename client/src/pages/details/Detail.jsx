@@ -20,11 +20,11 @@ const Detail = () => {
       <div className="desc">
         <h1>{title || "No title available"}</h1>
         
-        {/* Display the determined image source */}
+        {/* Display image source */}
         <img
           src={imageSrc}
           alt={title || "No title available"} // Fallback alt text
-          width="400" // Set width as needed
+          // width="400" // Set width as needed
         />
         
         <h4>Description</h4>
