@@ -20,7 +20,7 @@ The code contains a lot of comments because, as this was a new experience for me
 - remove from favorite;
 - in profile can update name and password
 
-## Usage
+## Usage in local computer
 1. Clone repository
 2. ### For backend
 2.1 Move to server directory
@@ -35,6 +35,8 @@ npm install
 ```
 npm start
 ```
+the backend will run http://localhost:5000/
+
 3. ### For frontend
 3.1 Move to client directory
 ```bash
@@ -48,6 +50,10 @@ npm install
 ```
 npm start
 ```
+the frontend will run http://localhost:3000/
+
+### NOTE
+This project uses a .env file to manage sensitive environment variables. For security reasons, the .env file is not included in this repository. Instead, an example file is provided.
 
 
 
