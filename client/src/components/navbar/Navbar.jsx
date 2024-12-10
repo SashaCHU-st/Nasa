@@ -38,7 +38,7 @@ const Navbar = () => {
               Search
             </NavLink>
             <NavLink to="/favorites" onClick={toggleMenu}>
-              Mine Favorites
+              My Favorites
             </NavLink>
             <NavLink to="/profile" onClick={toggleMenu}> 
               Profile
