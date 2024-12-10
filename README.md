@@ -36,7 +36,7 @@ npm install
 npm start
 ```
 3. ### For frontend
-3.12.1 Move to client directory
+3.1 Move to client directory
 ```bash
 cd client
 ```
