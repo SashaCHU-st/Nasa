@@ -20,4 +20,36 @@ The code contains a lot of comments because, as this was a new experience for me
 - remove from favorite;
 - in profile can update name and password
 
+## Usage
+1. Clone repository
+2. ### For backend
+2.1 Move to server directory
+```bash
+cd server
+```
+2.2 install dependencies
+```bash
+npm install
+```
+2.3 start server
+```
+npm start
+```
+3. ### For frontend
+3.12.1 Move to client directory
+```bash
+cd client
+```
+3.2 install dependencies
+```bash
+npm install
+```
+3.3 start server
+```
+npm start
+```
+
+
+
+
 
