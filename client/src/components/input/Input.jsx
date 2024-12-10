@@ -51,9 +51,9 @@ const Input = (props) => {
   return (
     <div className={`input-wrapper ${!inputState.isValid && inputState.isTouched && 'input-invalid'}`}>
       <input
-        id={props.id}
-        type={props.type}
-        value={inputState.value}// current filed
+        id={props.id}//name
+        type={props.type}//text
+        value={inputState.value}// current filed the value, and validirt
         onChange={changeHandler}///user write smth
         onBlur={touchHandler}// when user will touch
         className="input-field"

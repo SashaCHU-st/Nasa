@@ -7,8 +7,8 @@ const UserList = ({ items, loading }) => {
 
   return (
     <ul className="users-list">
-      {loading && <LoadingSpinner asOverlay />}
       {items.length === 0 &&  <h2 className="center">No users found</h2>}
+      {loading && <LoadingSpinner asOverlay />}
       {items.map((user) => (
         <div key={user.id} className="user-card">
           <UserItem

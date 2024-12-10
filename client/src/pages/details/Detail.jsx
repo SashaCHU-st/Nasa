@@ -2,7 +2,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import "./Detail.css";
-import defaultImage from "../../assets/home1.jpg"; // Import a fallback image
+import defaultImage from "../../assets/home1.jpg"; 
 
 const Detail = () => {
   // useLocation is used to access the state passed from Favorites component

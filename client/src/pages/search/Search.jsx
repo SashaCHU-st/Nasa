@@ -10,7 +10,7 @@ import Card from '../../components/card/Card';
 const fetchNASAData = async (query) => {
   const apiUrl = process.env.REACT_APP_NASA_API_URL; 
   const url = `${apiUrl}${query}`;
-  const response = await fetch(url);
+  const response = await fetch(url);/// fetching only adat from api
   if (!response.ok) {
     throw new Error(`HTTP error! Status: ${response.status}`);
   }
@@ -34,7 +34,8 @@ const Search = () => {
   const [searchTriggered, setSearchTriggered] = useState(!!query.trim());//if triggred then set to true, if not contain from spaces
 
   const { data, isLoading, isError, error } = useQuery(// async req, for example data from API
-  /// returns data, isLoading, isError, error. "automized" req succh as  data, isLoading, isError, error, cashing
+  /// returns data, isLoading, isError, error. "automized" req succh as  data, isLoading, isError, error,
+  // cashing
   ///
     ['nasaData', query],// query changing =>req also will chenge
     () => fetchNASAData(query),// function to get data
@@ -53,7 +54,7 @@ const Search = () => {
       navigate(`?q=${query}`, { replace: true });// replace means that the old route
       // need to be replced by new, without create new history... will be fixed
     }
-  }, [query, navigate]);
+  }, [query, navigate]);//when this is chenging in terigger useEffect and it will do their job
 
   const fetchAPIData = () => {
     if (inputValue.trim()) {

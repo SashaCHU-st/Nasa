@@ -13,7 +13,7 @@ const Users = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch(`${url}/api/users/`);
+        const response = await fetch(`${url}/api/users/`);// just fetch for only getting users
         if (!response.ok) {
           throw new Error("Failed to fetch users");
         }
@@ -29,13 +29,6 @@ const Users = () => {
     fetchUsers();
   }, []); // Empty dependency array means it runs once 
 
-  // if (error) {
-  //   return (
-  //     <div className="center">
-  //       <h2>{error}</h2>
-  //     </div>
-  //   );
-  // }
 
   return (
     <div>

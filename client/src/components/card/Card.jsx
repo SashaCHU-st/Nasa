@@ -29,7 +29,7 @@ const Card = ({ data = [] }) => {// data has been sent from search
       const token = localStorage.getItem("token");
       const userId = localStorage.getItem("userId");
 
-      /// for adding to my favorite form another users
+      /// for adding to my favorite from another users
       if (!userId || !token) {
         alert("User not logged in. Please log in and try again.");
         return;
