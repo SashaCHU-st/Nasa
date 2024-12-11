@@ -19,7 +19,12 @@ const Default = () => {
         <ul>
           <li><strong>When NOT Logged In:</strong></li>
           <li><strong>Users:</strong> Displays all registered users, their information, and the number of favorite articles they like (will be updated).</li>
-          <li><strong>Note:</strong> It may take some time for the database to connect. Please wait a moment and refresh the page ⏳.</li>
+          <li>
+          <strong>
+            <span class="underline-text">Note: It may take some time for the database to connect (1-2 minutes). Please wait a moment and refresh the page. ⏳
+            </span>
+          </strong>
+        </li>
           <li><strong>Login/Signup:</strong> You can log in using credentials that I have sent you privately, or create a new dummy account.</li>
           <li><strong>When Logged In:</strong></li>
           <ul>
