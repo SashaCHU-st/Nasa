@@ -22,7 +22,7 @@ The code contains a lot of comments because, as this was a new experience for me
 
 # Usage in local computer
 ## Requirements:
-- Node 14 and more;
+- Node version 14 and more;
 - npm version v10.8.2;
 
 ## Steps
