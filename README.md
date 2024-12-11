@@ -88,11 +88,11 @@ Project is still have issuies, that I am working on:
 | Go back to search page | done |
 | Check what other users liked articles | done |
 |<span style="color:red;">**Some bugs or future feature**</span>  | 🔴 |
-| fix when go after several searches |  |
-| for profile + create new picture |  |
+| fix serach, when goes after several searches |  |
+| for profile create new picture |  |
 | Add update, create notes for favorites |  |
 | possible add other's users favorites to mine (after login)|  |
-| when there ss no picture in the article, fix the bug|  |
+| when there is no picture in the article, fix the bug|  |
 
 
 
