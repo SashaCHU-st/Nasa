@@ -26,7 +26,7 @@ The code contains a lot of comments because, as this was a new experience for me
 - npm version v10.8.2;
 
 ## Steps
-1. Clone repository
+1.💻 Clone repository
 
  ### 🚀2. For backend
 2.1 Move to server directory
