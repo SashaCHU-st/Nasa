@@ -1,6 +1,6 @@
 # About project
 
-This is a project I worked on to practice building a full stack application.
+This is a project I worked on to practice building a full stack application, using MongoDB, Express, React, NASA API.
 
 There are still some bugs, which I am aware of, and from time to time, I try to fix them little by little.
 
@@ -20,42 +20,79 @@ The code contains a lot of comments because, as this was a new experience for me
 - remove from favorite;
 - in profile can update name and password
 
-## Usage in local computer
-1. Clone repository
-2. ### For backend
+# Usage in local computer
+## Requirements:
+- Node version 14 and more;
+- npm version v10.8.2;
+
+## Steps
+1.💻 Clone repository
+
+ ### 🚀2. For backend
 2.1 Move to server directory
 ```bash
 cd server
 ```
-2.2 install dependencies
+2.2 Install dependencies
 ```bash
 npm install
 ```
-2.3 start server
+### ❗ NOTE
+This project uses a .env file to manage sensitive environment variables. 
+
+For security reasons, the .env file is not included in this repository. Instead, an example file is provided.
+
+2.2.1 Replace the enviroment values with your own.
+    
+2.3 Start server
 ```
 npm start
 ```
 the backend will run http://localhost:5000/
 
-3. ### For frontend
+ ### 🚀3. For frontend
 3.1 Move to client directory
 ```bash
 cd client
 ```
-3.2 install dependencies
+3.2 Install dependencies
 ```bash
 npm install
 ```
-3.3 start server
+This project uses a .env file to manage sensitive environment variables. 
+### ❗ NOTE
+For security reasons, the .env file is not included in this repository. Instead, an example file is provided.
+
+3.2.1 Replace the enviroment values with your own.
+  
+3.3 Start server
 ```
 npm start
 ```
 the frontend will run http://localhost:3000/
 
-### NOTE
-This project uses a .env file to manage sensitive environment variables. For security reasons, the .env file is not included in this repository. Instead, an example file is provided.
 
-
+Project is still have issuies, that I am working on:
+## ✅TODO LIST
+| Feature/bug | done? | 
+|----------|----------|
+| **Fixed** | 🟢|
+  users=> login/signup/logout/getusers | done  |
+  articles=> add to favorite/show all favorite/delete from favorite | done  |
+| Show in favorites| done |
+| Fix picture in favorites | done |
+| Delete from favorite |  done|
+| Fixing isues when signup | done |
+| Fix image for details, after favorite | done |
+| Create profile for user/update password/name |  done|
+| Go back to search page | done |
+| Check what other users liked articles | done |
+|<span style="color:red;">**Some bugs or future feature**</span>  | 🔴 |
+| fix serach, when goes after several searches |  |
+| for profile create new picture |  |
+| Add update, create notes for favorites |  |
+| possible add other's users favorites to mine (after login)|  |
+| when there is no picture in the article, fix the bug|  |
 
 
 
