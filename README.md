@@ -24,7 +24,6 @@ The code contains a lot of comments because, as this was a new experience for me
 ## Requirements:
 - Node 14 and more;
 - npm version v10.8.2;
-- MongoDb 
 
 ## Steps
 1. Clone repository
