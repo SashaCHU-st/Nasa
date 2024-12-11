@@ -21,7 +21,7 @@ const Default = () => {
           <li><strong>Users:</strong> Displays all registered users, their information, and the number of favorite articles they like (will be updated).</li>
           <li>
           <strong>
-            <span class="underline-text">Note: It may take some time for the database to connect (1-2 minutes). Please wait a moment and refresh the page. ⏳
+            <span class="underline-text">‼️Note: It may take some time for the database to connect (1-2 minutes). Please wait a moment and refresh the page. ⏳
             </span>
           </strong>
         </li>
