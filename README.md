@@ -27,40 +27,52 @@ The code contains a lot of comments because, as this was a new experience for me
 
 ## Steps
 1. Clone repository
-2. ### For backend
+
+### 2. For backend
 2.1 Move to server directory
 ```bash
 cd server
 ```
-2.2 install dependencies
+2.2 Install dependencies
 ```bash
 npm install
 ```
-2.3 start server
+### NOTE
+This project uses a .env file to manage sensitive environment variables. 
+
+For security reasons, the .env file is not included in this repository. Instead, an example file is provided.
+
+2.2.1 Replace the enviroment values with your own.
+    
+2.3 Start server
 ```
 npm start
 ```
 the backend will run http://localhost:5000/
 
-3. ### For frontend
+### 3. For frontend
 3.1 Move to client directory
 ```bash
 cd client
 ```
-3.2 install dependencies
+3.2 Install dependencies
 ```bash
 npm install
 ```
-3.3 start server
+This project uses a .env file to manage sensitive environment variables. 
+### NOTE
+For security reasons, the .env file is not included in this repository. Instead, an example file is provided.
+
+3.2.1 Replace the enviroment values with your own.
+  
+3.3 Start server
 ```
 npm start
 ```
 the frontend will run http://localhost:3000/
 
-### NOTE
-This project uses a .env file to manage sensitive environment variables. For security reasons, the .env file is not included in this repository. Instead, an example file is provided.
 
-
+Project is still have issuies, that I am working on:
 ## TODO LIST
 | Feature | done? | 
 |----------|----------|
@@ -80,6 +92,7 @@ This project uses a .env file to manage sensitive environment variables. For sec
 | for profile + create new picture |  |
 | Add update, create notes for favorites |  |
 | possible add other's users favorites to mine (after login)|  |
+| when there ss no picture in the article, fix the bug|  |
 
 
 
