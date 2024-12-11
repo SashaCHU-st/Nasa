@@ -28,7 +28,7 @@ The code contains a lot of comments because, as this was a new experience for me
 ## Steps
 1. Clone repository
 
-### 2. For backend
+ ### 🚀2. For backend
 2.1 Move to server directory
 ```bash
 cd server
@@ -37,7 +37,7 @@ cd server
 ```bash
 npm install
 ```
-### NOTE
+### ❗ NOTE
 This project uses a .env file to manage sensitive environment variables. 
 
 For security reasons, the .env file is not included in this repository. Instead, an example file is provided.
@@ -50,7 +50,7 @@ npm start
 ```
 the backend will run http://localhost:5000/
 
-### 3. For frontend
+ ### 🚀3. For frontend
 3.1 Move to client directory
 ```bash
 cd client
@@ -60,7 +60,7 @@ cd client
 npm install
 ```
 This project uses a .env file to manage sensitive environment variables. 
-### NOTE
+### ❗ NOTE
 For security reasons, the .env file is not included in this repository. Instead, an example file is provided.
 
 3.2.1 Replace the enviroment values with your own.
@@ -73,8 +73,8 @@ the frontend will run http://localhost:3000/
 
 
 Project is still have issuies, that I am working on:
-## TODO LIST
-| Feature | done? | 
+## ✅TODO LIST
+| Feature/bug | done? | 
 |----------|----------|
 | **Fixed** | 🟢|
   users=> login/signup/logout/getusers | done  |
