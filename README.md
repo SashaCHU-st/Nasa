@@ -94,4 +94,4 @@ Project is still have issuies, that I am working on:
 | possible add other's users favorites to mine (after login)|  |
 | when there is no picture in the article, fix the bug|  |
 | maximum amount of character at name, password and email, need to fix|  |
-
+| more secured passwords checks|  |
