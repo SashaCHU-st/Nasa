@@ -5,6 +5,7 @@ import { AuthContext } from "../../components/context/auth-context";
 import {
   VALIDATOR_EMAIL,
   VALIDATOR_MINLENGTH,
+  VALIDATOR_MAXLENGTH,
   VALIDATOR_REQUIRE,
 } from "../../util/validators";
 import { useForm } from "../../hooks/form-hook";
@@ -132,8 +133,8 @@ const Auth = () => {
                 id="name"
                 type="text"
                 label="Your Name"
-                validators={[VALIDATOR_REQUIRE()]}
-                errorText="Please enter a name."
+                validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(28)]}
+                errorText="Please enter a name, not more then 28 characters"
                 onInput={inputHandler}
               />
             )}
@@ -142,7 +143,7 @@ const Auth = () => {
               id="email"
               type="email"
               label="E-Mail"
-              validators={[VALIDATOR_EMAIL()]}
+              validators={[VALIDATOR_EMAIL(), VALIDATOR_MAXLENGTH(40)]}
               errorText="Please enter a valid email address."
               onInput={inputHandler}
             />
@@ -151,8 +152,8 @@ const Auth = () => {
               id="password"
               type="password"
               label="Password"
-              validators={[VALIDATOR_MINLENGTH(5)]}
-              errorText="Please enter a valid password, at least 5 characters."
+              validators={[VALIDATOR_MINLENGTH(5), VALIDATOR_MAXLENGTH(30)]}
+              errorText="Please enter a valid password, at least 5 characters and no more then 30 characters."
               onInput={inputHandler}
             />
             <button type="submit" disabled={!formState.isValid}> {/*disables while !formState.isValid*, when bacsame valid it 
