@@ -93,5 +93,5 @@ Project is still have issuies, that I am working on:
 | Add update, create notes for favorites |  |
 | possible add other's users favorites to mine (after login)|  |
 | when there is no picture in the article, fix the bug|  |
-| maximum ampunt of character is name, password and email, need to fix|  |
+| maximum amount of character at name, password and email, need to fix|  |
 
