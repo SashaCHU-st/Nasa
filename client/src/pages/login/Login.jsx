@@ -132,7 +132,7 @@ const Auth = () => {
                 element="input"
                 id="name"
                 type="text"
-                label="Your Name (max 28 characters)"
+                label="Your Name"
                 validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(28)]}
                 errorText="Please enter a name, not more then 28 characters"
                 onInput={inputHandler}
@@ -142,7 +142,7 @@ const Auth = () => {
               element="input"
               id="email"
               type="email"
-              label="E-Mail (max 40 characters)"
+              label="E-Mail"
               validators={[VALIDATOR_EMAIL(), VALIDATOR_MAXLENGTH(40)]}
               errorText="Please enter a valid email address."
               onInput={inputHandler}
@@ -151,7 +151,7 @@ const Auth = () => {
               element="input"
               id="password"
               type="password"
-              label="Password (max 30 characters)"
+              label="Password"
               validators={[VALIDATOR_MINLENGTH(5), VALIDATOR_MAXLENGTH(30)]}
               errorText="Please enter a valid password, at least 5 characters and no more then 30 characters."
               onInput={inputHandler}
