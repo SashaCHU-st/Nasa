@@ -77,7 +77,7 @@ const Profile = () => {
               element="input"
               id="name"
               type="text"
-              label="Name (no more than 28 characters)"
+              label="Name (max 28 characters)"
               validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(28)]}
               errorText="Please enter a name, not more then 28 characters"
               onInput={inputHandler}
@@ -87,7 +87,7 @@ const Profile = () => {
               element="input"
               id="password"
               type="password"
-              label="Password (no more than 30 characters)"
+              label="Password (max 30 characters)"
               validators={[VALIDATOR_MINLENGTH(5),VALIDATOR_MAXLENGTH(30)]}
               // errorText="Please enter a valid password, at least 5 characters."
               onInput={inputHandler}
