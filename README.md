@@ -1,4 +1,4 @@
-# About project
+# About project 
 
 This is a project I worked on to practice building a full stack application, using MongoDB, Express, React, NASA API.
 
