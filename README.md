@@ -1,6 +1,6 @@
 # About project 
 
-https://nasa-gyvq.vercel.app/
+Fully deployed: https://nasa-gyvq.vercel.app/
 
 This is a project I worked on to practice building a full stack application, using MongoDB, Express, React, NASA API.
 
