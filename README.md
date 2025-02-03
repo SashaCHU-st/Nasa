@@ -97,3 +97,4 @@ Project is still have issuies, that I am working on:
 | possible add other's users favorites to mine (after login)|  |
 | when there is no picture in the article, fix the bug|  |
 | more secured passwords checks|  |
+| make tests|  |
