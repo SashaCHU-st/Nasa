@@ -2,7 +2,7 @@
 
 Fully deployed: https://nasa-gyvq.vercel.app/
 
-This is a project I worked on to practice building a full stack application, using MongoDB, Express, React, NASA API.
+This is a project I worked on to practice building a full stack application, using MongoDB, Express, React,TypeScript, NASA API.
 
 There are still some bugs, which I am aware of, and from time to time, I try to fix them little by little.
 
