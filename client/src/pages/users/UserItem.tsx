@@ -4,7 +4,18 @@ import "./UserItem.css";
 import image from "../../assets/dog.jpg"; 
 import UserCard from "./UserCard";
 
-const UserItem = ({ id, name, email, favoritesCount }) => {
+
+interface UserItemProps
+{
+  id:string;
+  name:string;
+  // email:string;
+  favoritesCount:number
+  articles:string[];
+}
+
+
+const UserItem:React.FC<UserItemProps> = ({ id, name, favoritesCount }) => {
   const navigate = useNavigate();
   const handleViewArticles = () => {
     navigate('/shared-favorites', { state: { userId: id } });// passing userId to check favorites for users
@@ -16,7 +27,7 @@ const UserItem = ({ id, name, email, favoritesCount }) => {
         <img src={image} alt={name} className="user-item__image" /> {/*default image for now for everyone*/}
         <div>
           <h2>{name}</h2>
-          <p>{email}</p>
+          {/* <p>{email}</p> */}
           <p>Favorites: {favoritesCount}</p>
           <button onClick={handleViewArticles}>View Favorite Articles</button>
         </div>

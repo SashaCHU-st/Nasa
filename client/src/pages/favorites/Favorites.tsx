@@ -4,9 +4,18 @@ import { useNavigate } from 'react-router-dom';
 import './Favorites.css';
 import LoadingSpinner from "../../components/loading/LoadingSpinner";
 
+interface Articles
+{
+  _id:string;
+  title:string;
+  image:string;
+  description:string;
+}
+const article: Articles[] = [];
+
 const Favorites = () => {
-  const [favorites, setFavorites] = useState([]);
-  const [error, setError] = useState(null);
+  const [favorites, setFavorites] = useState<Articles[]>([]);
+  // const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate(); 
   const url = process.env.REACT_APP_BACKEND_URL;
@@ -19,7 +28,7 @@ const Favorites = () => {
         const userId = localStorage.getItem('userId');
 
         if (!token || !userId) {
-          setError('Please log in to view favorites.');
+          // setError('Please log in to view favorites.');
           setLoading(false);
           return;
         }
@@ -31,9 +40,16 @@ const Favorites = () => {
           },
         });
         setFavorites(response.data.favorites);
-      } catch (err) {
-        setError(err.response ? err.response.data.message : 'Something went wrong');
-      } finally {
+      } catch (err: unknown) {
+            // unkknown will handle error types from Axios, JS, unknown
+            if (axios.isAxiosError(err)) {
+              alert(err.response?.data.message || "Something went wrong");
+            } else if (err instanceof Error) {
+              alert(err.message);
+            } else {
+              alert("An  unknown error occured");
+            }
+          } finally {
         setLoading(false);
       }
     };
@@ -41,13 +57,13 @@ const Favorites = () => {
     fetchFavorites();
   }, []); // Empty dependency array to run once 
 
-  const removeFavoriteHandler = async (articleId) => {
+  const removeFavoriteHandler = async (articleId:string) => {
     try {
       const token = localStorage.getItem('token');
       const userId = localStorage.getItem('userId');
 
       if (!token || !userId) {
-        setError('Please log in to remove favorites.');
+        // setError('Please log in to remove favorites.');
         return;
       }
 
@@ -59,15 +75,23 @@ const Favorites = () => {
 
       setFavorites((prevFavorites) => prevFavorites.filter((article) => article._id !== articleId));
       alert('Removed from favorites');
-    } catch (err) {
-      setError(err.response ? err.response.data.message : 'Something went wrong');
-    }
+    } catch (err: unknown) {
+          // unkknown will handle error types from Axios, JS, unknown
+          if (axios.isAxiosError(err)) {
+            alert(err.response?.data.message || "Something went wrong");
+          } else if (err instanceof Error) {
+            alert(err.message);
+          } else {
+            alert("An  unknown error occured");
+          }
+        }
   };
   return (
     <div className="favorites">
       {loading && <LoadingSpinner asOverlay />}
-      {error && <p className="error">{error}</p>}
-      {favorites.length === 0 && !error ? (
+      {/* {error && <p className="error">{error}</p>} */}
+      {/* {favorites.length === 0 && !error ? ( */}
+      {favorites.length === 0 ? (
         <p>No favorites yet!</p>
       ) : (
         <div className="card">

@@ -1,17 +1,18 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../context/auth-context";
-import { NavLink, useNavigate } from "react-router-dom"; // Используем NavLink для навигации
+import { NavLink} from "react-router-dom"; // Use navLink for navigation
 import "./Navbar.css";
 
+
 const Navbar = () => {
-  const auth = useContext(AuthContext); // Получаем контекст авторизации
+  const auth = useContext(AuthContext); // get the context of authorization
   const [show, setShow] = React.useState(false);
   // const navigate = useNavigate();
 
   const toggleMenu = () => setShow((prevShow) => !prevShow);
 
   const logoutHandler = () => {
-    auth.logout();  // loggeed out
+    auth?.logout();  // loggeed out
   //  navigate("/");   // after logout to the main page, maybe not need... fix later
   };
 
@@ -21,7 +22,7 @@ const Navbar = () => {
         <NavLink to="/">Sasha's Universe</NavLink>
       </div>
       <div className={show ? "linkWr show" : "linkWr"}>
-        {!auth.isLoggedIn && (
+        {!auth?.isLoggedIn && (
           <>
             <NavLink to="/users" onClick={toggleMenu}>
               Users
@@ -32,7 +33,7 @@ const Navbar = () => {
             </NavLink>
           </>
         )}
-        {auth.isLoggedIn && (
+        {auth?.isLoggedIn && (
           <>
             <NavLink to="/search" onClick={toggleMenu}> 
               Search
@@ -43,7 +44,7 @@ const Navbar = () => {
             <NavLink to="/profile" onClick={toggleMenu}> 
               Profile
             </NavLink>
-            <NavLink onClick={logoutHandler}> 
+            <NavLink to="/" onClick={logoutHandler}> 
               Logout
             </NavLink>
           </>
