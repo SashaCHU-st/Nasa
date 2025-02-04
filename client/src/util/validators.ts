@@ -6,36 +6,52 @@ const VALIDATOR_TYPE_MAX = 'MAX';
 const VALIDATOR_TYPE_EMAIL = 'EMAIL';
 const VALIDATOR_TYPE_FILE = 'FILE';
 
+interface ValItems{
+  type:string;
+  val?:string;
+}
+
+
 export const VALIDATOR_REQUIRE = () => ({ type: VALIDATOR_TYPE_REQUIRE });
 export const VALIDATOR_FILE = () => ({ type: VALIDATOR_TYPE_FILE });
-export const VALIDATOR_MINLENGTH = val => ({
+export const VALIDATOR_MINLENGTH = ():ValItems => ({
   type: VALIDATOR_TYPE_MINLENGTH,
-  val: val
 });
-export const VALIDATOR_MAXLENGTH = val => ({
+export const VALIDATOR_MAXLENGTH = ():ValItems => ({
   type: VALIDATOR_TYPE_MAXLENGTH,
-  val: val
 });
-export const VALIDATOR_MIN = val => ({ type: VALIDATOR_TYPE_MIN, val: val });
-export const VALIDATOR_MAX = val => ({ type: VALIDATOR_TYPE_MAX, val: val });
+export const VALIDATOR_MIN = ():ValItems => ({ type: VALIDATOR_TYPE_MIN });
+export const VALIDATOR_MAX = ():ValItems => ({ type: VALIDATOR_TYPE_MAX });
 export const VALIDATOR_EMAIL = () => ({ type: VALIDATOR_TYPE_EMAIL });
 
-export const validate = (value, validators) => {
+interface Validator
+{
+  type:string;
+  val?:number;
+}
+
+// interface ValidateProps
+// {
+//   value:string;
+//   validators:Validator[];
+// }
+
+export const validate = (value:string, validators:Validator[]):boolean => {
   let isValid = true;
   for (const validator of validators) {
     if (validator.type === VALIDATOR_TYPE_REQUIRE) {
       isValid = isValid && value.trim().length > 0;
     }
-    if (validator.type === VALIDATOR_TYPE_MINLENGTH) {
+    if (validator.type === VALIDATOR_TYPE_MINLENGTH && validator.val !== undefined) {
       isValid = isValid && value.trim().length >= validator.val;
     }
-    if (validator.type === VALIDATOR_TYPE_MAXLENGTH) {
+    if (validator.type === VALIDATOR_TYPE_MAXLENGTH && validator.val !== undefined) {
       isValid = isValid && value.trim().length <= validator.val;
     }
-    if (validator.type === VALIDATOR_TYPE_MIN) {
+    if (validator.type === VALIDATOR_TYPE_MIN && validator.val !== undefined) {
       isValid = isValid && +value >= validator.val;
     }
-    if (validator.type === VALIDATOR_TYPE_MAX) {
+    if (validator.type === VALIDATOR_TYPE_MAX && validator.val !== undefined) {
       isValid = isValid && +value <= validator.val;
     }
     if (validator.type === VALIDATOR_TYPE_EMAIL) {

@@ -2,7 +2,18 @@ import React, { useReducer, useEffect } from 'react';
 import { validate } from '../../util/validators';
 import './Input.css';
 
-const inputReducer = (state, action) => {
+interface InputState
+{
+  value:string;
+  isValid:boolean;
+  isTouched:boolean;
+}
+
+type InputAction =
+  | { type: "CHANGE"; value: string; isValid: boolean }
+  | { type: "TOUCH" }; // No additional payload needed for TOUCH action
+
+const inputReducer = (state:InputState, action:InputAction):InputState => {
   switch (action.type) {
     case 'CHANGE': // chaning cur.state to new one
       return {
@@ -21,9 +32,23 @@ const inputReducer = (state, action) => {
   }
 };
 
-const Input = (props) => {
+interface InputProps
+{
+  id:string;
+  type:string;
+  value:string;
+  valid:boolean;
+  label:string;
+  validators:any[];
+  errorText?:string;
+  onInput:(id:string,value:string,isValid:boolean) =>void
+
+}
+
+//dispatch function to send actions
+const Input: React.FC<InputProps>= (props) => {
   const [inputState, dispatch] = useReducer(inputReducer, {// InputState cur.state of filed 
-    value: props.value || '',
+    value: props.value || "",
     isValid: props.valid || false,
     isTouched: false,
   });
@@ -36,7 +61,7 @@ const Input = (props) => {
     // on Input->inputHandler
   }, [id, value, isValid, onInput]);
 
-  const changeHandler = (event) => {// changing to change mode
+  const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {// changing to change mode
     dispatch({
       type: 'CHANGE',// calls with CHANGE type
       value: event.target.value,// and sends new value

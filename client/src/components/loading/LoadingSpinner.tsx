@@ -1,7 +1,11 @@
 import React from "react";
 import "./LoadingSpinner.css"; 
 
-const LoadingSpinner = ({ asOverlay }) => {
+interface LoadingSpinnerProps {
+  asOverlay?: boolean;
+}
+
+const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ asOverlay }) => {
   return (
     <div className={`${asOverlay ? "spinner-overlay" : "spinner"}`}>
       <div className="lds-dual-ring"></div>

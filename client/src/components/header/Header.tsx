@@ -1,8 +1,17 @@
 import React from 'react';
 import './Header.css';
 
-const Header = ({ fetchAPIData, query, setQuery }) => {
-  const handleSubmit = (e) => {
+interface HeaderProps
+{
+  fetchAPIData:()=>void;
+  query:string;
+  setQuery:(query:string)=>void;
+
+
+}
+
+const Header: React.FC<HeaderProps> = ({ fetchAPIData, query, setQuery }) => {
+  const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // prevent updating page
     fetchAPIData(); // call fetchData
   };

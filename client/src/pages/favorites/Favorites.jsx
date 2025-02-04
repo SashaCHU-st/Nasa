@@ -79,6 +79,7 @@ const Favorites = () => {
                   <img
                     src={article.image} 
                     alt={article.title || 'Image'} 
+                    loading='lazy'///!!!!!
                     // width="200" 
                   />
                 ) : (

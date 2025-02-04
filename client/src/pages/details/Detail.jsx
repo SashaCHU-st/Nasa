@@ -6,7 +6,7 @@ import defaultImage from "../../assets/home1.jpg";
 
 const Detail = () => {
   // useLocation is used to access the state passed from Favorites component
-  const { state } = useLocation();
+  const { state } = useLocation();// e.g /details
   const { title, description, image, links } = state || {}; // Extract all possible properties
 
   // Determine the image source:

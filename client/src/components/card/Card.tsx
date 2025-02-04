@@ -1,18 +1,34 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./Card.css";
-import axios from "axios";//!!!!! axios lbararu to send http req
+import axios from "axios"; //!!!!! axios lbararu to send http req
 
-const Card = ({ data = [] }) => {// data has been sent from search 
+interface Cardprops {
+  data: NasaItem[];
+}
+
+interface NasaItem {
+  data: {
+    nasa_id: string;
+    title: string;
+    description?: string;
+  }[];
+  links?: { href: string }[];
+}
+
+const Card: React.FC<Cardprops> = ({ data = [] }) => {
+  // data has been sent from search
   const navigate = useNavigate();
   const location = useLocation(); //info about current url and state
   const url = process.env.REACT_APP_BACKEND_URL;
-  const addFavHandler = async (item, event) => {
-    event.preventDefault();/// maybe not really needed?
+  const addFavHandler = async (
+    item: NasaItem,
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault(); // needed to prevent behavior from the browser
 
-    const article = item.data[0]; // get data form api that gets from devtools 
-    const image = item.links && item.links[0] ? item.links[0].href : null;// get image, image is under data so need separate
-
+    const article = item.data[0]; // get data form api that gets from devtools
+    const image = item.links?.[0]?.href || null; // get image, image is under data so need separate
 
     /// just in case
     if (!image) {
@@ -36,7 +52,8 @@ const Card = ({ data = [] }) => {// data has been sent from search
       }
 
       // sending to server req
-      const response = await axios.post(// axios help send post req to server to add new article
+      const response = await axios.post(
+        // axios help send post req to server to add new article
         `${url}/api/articles/${userId}`,
         {
           nasa_id: article.nasa_id,
@@ -50,14 +67,21 @@ const Card = ({ data = [] }) => {// data has been sent from search
       );
 
       alert("Article added to favorites!");
-    } catch (err) {
-      alert(err.response ? err.response.data.message : "Something went wrong");
+    } catch (err: unknown) {
+      // unkknown will handle error types from Axios, JS, unknown
+      if (axios.isAxiosError(err)) {
+        alert(err.response?.data.message || "Something went wrong");
+      } else if (err instanceof Error) {
+        alert(err.message);
+      } else {
+        alert("An  unknown error occured");
+      }
     }
   };
 
   return (
     <div className="card">
-             {/* 
+      {/* 
        data.map taken from data that comes from API
        e.g when req is happening in DevTools can see which strcuture was given for each object
        in this case it was item and index means the index of this object
@@ -93,7 +117,7 @@ const Card = ({ data = [] }) => {// data has been sent from search
                     description: item.data[0]?.description,
                     query: location.state?.query, // save query staet as it is
                     searchTriggered: location.state?.searchTriggered, // save state of the search, in case if back button
-                    },
+                  },
                 })
               }
             >

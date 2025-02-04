@@ -34,13 +34,14 @@ const Profile = () => {
     fetchUserData();
   }, []); // Empty dependency array ensures this runs only once
 
-  const inputHandler = useCallback((id, value, isValid) => {
+  const inputHandler = useCallback((id, value, isValid) => {// memorize function , that do not recreate it again, if dependecies
+    //have not changed
     setUserData((state) => ({
       ...state,
       [id]: value
     }));
     setFormIsValid(isValid);
-  }, []);
+  }, []);// when it is empty then never will be reacreted
 
   const errorHandler = () => {
     setError(null);
