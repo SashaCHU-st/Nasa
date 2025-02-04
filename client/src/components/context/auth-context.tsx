@@ -1,12 +1,16 @@
 import React, { useState, createContext, useEffect, ReactNode } from "react";
 
 interface AuthContextType {
+  userId: string | null;
+  token: string | null;
   isLoggedIn: boolean;
-  login: () => void;
+  login: (userId: string, token: string) => void;
   logout: () => void;
 }
 
-export const AuthContext = createContext<AuthContextType | undefined>(undefined);
+export const AuthContext = createContext<AuthContextType | undefined>(
+  undefined
+);
 
 // export const AuthContext = createContext();
 interface AuthProviderProps {
@@ -14,30 +18,42 @@ interface AuthProviderProps {
 }
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const storedUserLoggedInInfo = localStorage.getItem("isLoggedIn");// if getItem will return null=> means that user never logged in
-  const [isLoggedIn, setIsLoggedIn] = useState(storedUserLoggedInInfo === "true");// checking if storedUserLoggedInInfo equal === true, if not
+  const [userId, setUserId] = useState<string | null>(null);
+  const [token, setToken] = useState<string | null>(null);
+  const storedUserLoggedInInfo = localStorage.getItem("isLoggedIn"); // if getItem will return null=> means that user never logged in
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    storedUserLoggedInInfo === "true"
+  ); // checking if storedUserLoggedInInfo equal === true, if not
   // it means that null !== true => so it will be false in this case
 
-  // // save stage accordinally 
+  // // save stage accordinally
   // useEffect(() => {
   //   if (isLoggedIn) {// if it was true then it will be here
   //   } else {// then logged out
   //   }
   // }, [isLoggedIn]);// always reacting on chenage of logged in/out
-  
-  const login = () => {
-    setIsLoggedIn(true);// call when loogin when auth.login
+
+  const login = (userId: string, token: string) => {
+    setIsLoggedIn(true); // call when loogin when auth.login
+    setUserId(userId);
+    setToken(token);
     localStorage.setItem("isLoggedIn", "true");
+    localStorage.setItem("userId", userId);
+    localStorage.setItem("token", token);
   };
-  
+
   const logout = () => {
     setIsLoggedIn(false);
+    setUserId(null);
+    setToken(null);
     localStorage.setItem("isLoggedIn", "false");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("token");
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
-       {children}  {/*children has acces to data */}
+    <AuthContext.Provider value={{ isLoggedIn, login, logout, userId, token }}>
+      {children} {/*children has acces to data */}
     </AuthContext.Provider>
   );
 };

@@ -5,12 +5,18 @@ import LoadingSpinner from "../../components/loading/LoadingSpinner";
 import "./FavoriteArticlesPage.css"; 
 import ErrorModal from "../../components/error_component/ErrorModal";
 
+interface Article
+{
+  title:string;
+  image:string;
+}
+
 const FavoriteArticlesPage = () => {
   const location = useLocation();
   const { userId } = location.state || { userId: null }; // Extract userId from state
-  const [articles, setArticles] = useState([]);
+  const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
   const url = process.env.REACT_APP_BACKEND_URL;
 
   useEffect(() => {
@@ -41,7 +47,7 @@ const FavoriteArticlesPage = () => {
   return (
     <div className="favorites-page">
       {loading && <LoadingSpinner asOverlay />}
-      {error && <ErrorModal error={error} />}
+      {error && <ErrorModal error={error} onClear={() => setError("")} />}
       <h1>Favorite Articles</h1>
       {articles.length > 0 ? (
         <div className="articles-container">

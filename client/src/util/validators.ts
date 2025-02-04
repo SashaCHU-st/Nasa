@@ -8,17 +8,19 @@ const VALIDATOR_TYPE_FILE = 'FILE';
 
 interface ValItems{
   type:string;
-  val?:string;
+  val?:number;
 }
 
 
 export const VALIDATOR_REQUIRE = () => ({ type: VALIDATOR_TYPE_REQUIRE });
 export const VALIDATOR_FILE = () => ({ type: VALIDATOR_TYPE_FILE });
-export const VALIDATOR_MINLENGTH = ():ValItems => ({
+export const VALIDATOR_MINLENGTH = (minLength: number):ValItems => ({
   type: VALIDATOR_TYPE_MINLENGTH,
+  val:minLength,
 });
-export const VALIDATOR_MAXLENGTH = ():ValItems => ({
+export const VALIDATOR_MAXLENGTH = (maxLength: number):ValItems => ({
   type: VALIDATOR_TYPE_MAXLENGTH,
+  val:maxLength,
 });
 export const VALIDATOR_MIN = ():ValItems => ({ type: VALIDATOR_TYPE_MIN });
 export const VALIDATOR_MAX = ():ValItems => ({ type: VALIDATOR_TYPE_MAX });

@@ -7,7 +7,8 @@ import LoadingSpinner from '../../components/loading/LoadingSpinner';
 import ErrorModal from '../../components/error_component/ErrorModal';
 import Card from '../../components/card/Card';
 
-const fetchNASAData = async (query) => {
+
+const fetchNASAData = async (query:string) => {
   const apiUrl = process.env.REACT_APP_NASA_API_URL; 
   const url = `${apiUrl}${query}`;
   const response = await fetch(url);/// fetching only adat from api
@@ -21,6 +22,7 @@ const fetchNASAData = async (query) => {
 const Search = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
 // save what was put before even if page updated
   const [inputValue, setInputValue] = useState(() => {
@@ -75,7 +77,7 @@ const Search = () => {
             setQuery={setInputValue}
             fetchAPIData={fetchAPIData} 
           />
-          {isError && <ErrorModal error={error} />}{/*send thru props messge about error... will be updated*/}
+          {isError && <ErrorModal error={String(error)} onClear={()=>setErrorMessage("")}  />}{/*send thru props messge about error... will be updated*/}
           {data?.length === 0 && <h1 className="no_found">Sorry, no results found.</h1>}
           {data && data?.length > 0 && <Card data={data} />}
         </div>

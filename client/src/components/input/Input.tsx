@@ -32,6 +32,12 @@ const inputReducer = (state:InputState, action:InputAction):InputState => {
   }
 };
 
+interface Validator
+{
+  type:string;
+  value?:number;
+}
+
 interface InputProps
 {
   id:string;
@@ -39,7 +45,7 @@ interface InputProps
   value:string;
   valid:boolean;
   label:string;
-  validators:any[];
+  validators:Validator[];
   errorText?:string;
   onInput:(id:string,value:string,isValid:boolean) =>void
 

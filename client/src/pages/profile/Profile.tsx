@@ -10,8 +10,12 @@ const Profile = () => {
   const [userData, setUserData] = useState({ name: '', password: '' });// init name, pass
   const [formIsValid, setFormIsValid] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
   const [success, setSuccess] = useState(null);
+  const [formValidity, setFormValidity] = useState({
+    name: false,
+    password: false,
+  });
   const url = process.env.REACT_APP_BACKEND_URL;
 
   useEffect(() => {
@@ -34,7 +38,7 @@ const Profile = () => {
     fetchUserData();
   }, []); // Empty dependency array ensures this runs only once
 
-  const inputHandler = useCallback((id, value, isValid) => {// memorize function , that do not recreate it again, if dependecies
+  const inputHandler = useCallback((id:string, value:string, isValid:boolean) => {// memorize function , that do not recreate it again, if dependecies
     //have not changed
     setUserData((state) => ({
       ...state,
@@ -44,10 +48,10 @@ const Profile = () => {
   }, []);// when it is empty then never will be reacreted
 
   const errorHandler = () => {
-    setError(null);
+    setError("");
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token'); 
@@ -57,12 +61,14 @@ const Profile = () => {
         }
       });
       alert('Updated')
-      setError(null);
+      setError("");
     } catch (err) {
       setError('Failed to update profile');
       setSuccess(null);
     }
   };
+
+  
 
   return (
     <React.Fragment>
@@ -75,7 +81,7 @@ const Profile = () => {
             <h2>Update Profile</h2>
             {success && <h2 >{success}</h2>}
             <Input
-              element="input"
+              // element="input"
               id="name"
               type="text"
               label="Name (max 28 characters)"
@@ -83,9 +89,10 @@ const Profile = () => {
               errorText="Please enter a name, not more then 28 characters"
               onInput={inputHandler}
               value={userData.name}
+              valid={formValidity.name}
             />
             <Input
-              element="input"
+              // element="input"
               id="password"
               type="password"
               label="Password (max 30 characters)"
@@ -93,6 +100,7 @@ const Profile = () => {
               // errorText="Please enter a valid password, at least 5 characters."
               onInput={inputHandler}
               value={userData.password}
+              valid={formValidity.password}
             />
             <button type="submit" disabled={!formIsValid}>
               Update

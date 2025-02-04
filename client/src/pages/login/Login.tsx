@@ -20,7 +20,12 @@ const Auth = () => {
   const url = process.env.REACT_APP_BACKEND_URL;
   const [isLoginMode, setIsLoginMode] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
+    const [formValidity, setFormValidity] = useState({
+      name: false,
+      email:false,
+      password: false,
+    });
   const [formState, inputHandler, setFormData] = useForm(// custom one for following validity on each step
   // and hadle differrnt actions such change_input and set_form
     {
@@ -36,7 +41,7 @@ const Auth = () => {
       setFormData(
         {
           ...formState.inputs, // save current fields
-          name: undefined, // Remove the name field in LOGIN mode
+          name: {value:"",isValid:false}, // Remove the name field in LOGIN mode
         },
         formState.inputs.email.isValid && formState.inputs.password.isValid // and check if it is field are valid
       );
@@ -56,14 +61,14 @@ const Auth = () => {
     setIsLoginMode((prevMode) => !prevMode);//changing mode
   };
 
-  const authSubmitHandler = async (event) => {
+  const authSubmitHandler = async (event:React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsLoading(true);
 
     if (isLoginMode) {
       // when logged mode
       try {
-        setError(null);
+        setError("");
         const response = await fetch(`${url}/api/users/login`, {
           method: "POST",
           headers: {
@@ -81,11 +86,17 @@ const Auth = () => {
         localStorage.setItem("token", responseData.token);
         localStorage.setItem("userId", responseData.userId); // needed for future add fav
         setIsLoading(false);
-        auth.login(responseData.userId, responseData.token); // loggin users with token and userid that goten url
+        auth?.login(responseData.userId, responseData.token); // loggin users with token and userid that goten url
         navigate("/search"); // when logged in move to search
-      } catch (err) {
-        setError(err.message || "Something went wrong");
-        setIsLoading(false);
+      } catch (err:unknown) {
+        if(err instanceof Error)
+        {
+          setError(err.message);
+          setIsLoading(false);
+        }
+        else {
+          alert("An  unknown error occured");
+        }
       }
     } else {
       //When signup
@@ -107,17 +118,23 @@ const Auth = () => {
         }
         localStorage.setItem("token", responseData.token);
         localStorage.setItem("userId", responseData.userId);
-        auth.login(responseData.userId, responseData.token); // loggin users with token and userid that goten url, neede for latwr add to favorite/delte/update
+        auth?.login(responseData.userId, responseData.token); // loggin users with token and userid that goten url, neede for latwr add to favorite/delte/update
         navigate("/search"); // sending to search page
-      } catch (err) {
-        setError(err.message || "Something went wrong");
-        setIsLoading(false);
+      } catch (err:unknown) {
+        if(err instanceof Error)
+        {
+          setError(err.message);
+          setIsLoading(false);
+        }
+        else {
+          alert("An  unknown error occured");
+        }
       }
     }
   };
 
   const errorHandler = () => {
-    setError(null);// when parent will close it will set error to null
+    setError("");// when parent will close it will set error to null
   };
 
   return (
@@ -129,32 +146,38 @@ const Auth = () => {
           <form onSubmit={authSubmitHandler}>
             {!isLoginMode && (
               <Input
-                element="input"
+                // element="input"
                 id="name"
                 type="text"
                 label="Your Name"
                 validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(28)]}
                 errorText="Please enter a name, not more then 28 characters"
                 onInput={inputHandler}
+                value={formState.inputs.name.value}
+                valid={formState.inputs.name.isValid}
               />
             )}
             <Input
-              element="input"
+              // element="input"
               id="email"
               type="email"
               label="E-Mail"
               validators={[VALIDATOR_EMAIL(), VALIDATOR_MAXLENGTH(40)]}
               errorText="Please enter a valid email address."
               onInput={inputHandler}
+              value={formState.inputs.email.value}
+              valid={formState.inputs.email.isValid}
             />
             <Input
-              element="input"
+              // element="input"
               id="password"
               type="password"
               label="Password"
               validators={[VALIDATOR_MINLENGTH(5), VALIDATOR_MAXLENGTH(30)]}
               errorText="Please enter a valid password, at least 5 characters and no more then 30 characters."
               onInput={inputHandler}
+              value={formState.inputs.password.value}
+              valid={formState.inputs.password.isValid}
             />
             <button type="submit" disabled={!formState.isValid}> {/*disables while !formState.isValid*, when bacsame valid it 
             it will switch to active*/}
