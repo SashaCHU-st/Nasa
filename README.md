@@ -1,4 +1,6 @@
-# About project
+# About project 
+
+Fully deployed: https://nasa-gyvq.vercel.app/
 
 This is a project I worked on to practice building a full stack application, using MongoDB, Express, React, NASA API.
 
@@ -87,11 +89,12 @@ Project is still have issuies, that I am working on:
 | Create profile for user/update password/name |  done|
 | Go back to search page | done |
 | Check what other users liked articles | done |
+| maximum amount of character at name, password and email, need to fix| done |
 |<span style="color:red;">**Some bugs or future feature**</span>  | 🔴 |
 | fix serach, when goes after several searches |  |
 | for profile create new picture |  |
 | Add update, create notes for favorites |  |
 | possible add other's users favorites to mine (after login)|  |
 | when there is no picture in the article, fix the bug|  |
-| maximum amount of character at name, password and email, need to fix|  |
 | more secured passwords checks|  |
+| make tests|  |

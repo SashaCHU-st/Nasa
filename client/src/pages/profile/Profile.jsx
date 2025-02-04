@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import Input from "../../components/input/Input";
-import { VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH } from '../../util/validators';
+import { VALIDATOR_REQUIRE,  VALIDATOR_MAXLENGTH, VALIDATOR_MINLENGTH } from '../../util/validators';
 import LoadingSpinner from '../../components/loading/LoadingSpinner';
 import ErrorModal from '../../components/error_component/ErrorModal';
 import './Profile.css';
@@ -78,9 +78,9 @@ const Profile = () => {
               element="input"
               id="name"
               type="text"
-              label="Name"
-              validators={[VALIDATOR_REQUIRE()]}
-              errorText="Please enter your name."
+              label="Name (max 28 characters)"
+              validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(28)]}
+              errorText="Please enter a name, not more then 28 characters"
               onInput={inputHandler}
               value={userData.name}
             />
@@ -88,8 +88,8 @@ const Profile = () => {
               element="input"
               id="password"
               type="password"
-              label="Password"
-              validators={[VALIDATOR_MINLENGTH(5)]}
+              label="Password (max 30 characters)"
+              validators={[VALIDATOR_MINLENGTH(5),VALIDATOR_MAXLENGTH(30)]}
               // errorText="Please enter a valid password, at least 5 characters."
               onInput={inputHandler}
               value={userData.password}
