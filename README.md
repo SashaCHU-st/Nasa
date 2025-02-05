@@ -21,7 +21,7 @@ The code contains a lot of comments because, as this was a new experience for me
 
 
 # What works now:
-## When not logged in:
+## When NOT logged in:
 - Can see the default page, just main info about this project;
 - at Users page can see list of registered users;
 - Login or signup
