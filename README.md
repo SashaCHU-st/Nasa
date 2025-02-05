@@ -72,7 +72,8 @@ For security reasons, the .env file is not included in this repository. Instead,
 npm start
 ```
 the frontend will run http://localhost:3000/
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/4d4ee975-f57f-4953-a4c1-69c831f0cdaa)
+
 
 
  ### 🚀4. Testing (will be added more)
