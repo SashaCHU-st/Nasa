@@ -15,12 +15,16 @@ The code contains a lot of comments because, as this was a new experience for me
 - at Users page can see list of registered users;
 - Login or signup
 
+![Logout](https://github.com/user-attachments/assets/4c165120-431c-433d-9e2d-26e709c45df9)
+
 ## When logged in:
 - search something from NASA API;
 - add to favorite;
 - check details;
 - remove from favorite;
 - in profile can update name and password
+  
+![Login](https://github.com/user-attachments/assets/051d0a25-4da4-4dae-b696-6012b7d9608f)
 
 # Usage in local computer
 ## Requirements:
