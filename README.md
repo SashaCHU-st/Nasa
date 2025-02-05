@@ -1,3 +1,14 @@
+# Table of Contents
+
+- [About Project](#about-project)
+- [What Works Now](#what-works-now)
+  - [When Not Logged In](#when-not-logged-in)
+  - [When Logged In](#when-logged-in)
+- [Usage in Local Computer](#usage-in-local-computer)
+  - [Requirements](#requirements)
+  - [Steps](#steps)
+- [TODO LIST](#todo-list)
+
 # About project 
 
 Fully deployed: https://nasa-gyvq.vercel.app/
@@ -94,7 +105,7 @@ npx vitest
 
 
 ### Project is still have issuies, that I am working on:
-## ✅TODO LIST
+# ✅TODO LIST
 | Feature/bug | done? | 
 |----------|----------|
 | **Fixed** | 🟢|
