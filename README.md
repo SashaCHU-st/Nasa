@@ -77,7 +77,7 @@ the frontend will run http://localhost:3000/
 
 
 
- ### 🚀4. Testing (will be added more)
+ ### ⚛️4. Testing (will be added more)
 4.1 Move to client directory
 ```bash
 cd client
