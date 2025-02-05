@@ -24,7 +24,7 @@ The code contains a lot of comments because, as this was a new experience for me
 
 # Usage in local computer
 ## Requirements:
-- Node version 14 and more;
+- Node version 22;
 - npm version v10.8.2;
 
 ## Steps
@@ -73,8 +73,19 @@ npm start
 ```
 the frontend will run http://localhost:3000/
 
+ ### 🚀4. Testing (will be added more)
+4.1 Move to client directory
+```bash
+cd client
+```
+4.2 
+```bash
+npx vitest
+```
+![image](https://github.com/user-attachments/assets/aec848d0-17a8-4b27-beac-4b5e7e04fb29)
 
-Project is still have issuies, that I am working on:
+
+### Project is still have issuies, that I am working on:
 ## ✅TODO LIST
 | Feature/bug | done? | 
 |----------|----------|
@@ -97,4 +108,4 @@ Project is still have issuies, that I am working on:
 | possible add other's users favorites to mine (after login)|  |
 | when there is no picture in the article, fix the bug|  |
 | more secured passwords checks|  |
-| make tests|  |
+| make more tests|  |
