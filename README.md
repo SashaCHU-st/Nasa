@@ -72,6 +72,8 @@ For security reasons, the .env file is not included in this repository. Instead,
 npm start
 ```
 the frontend will run http://localhost:3000/
+![Uploading image.png…]()
+
 
  ### 🚀4. Testing (will be added more)
 4.1 Move to client directory
