@@ -35,6 +35,7 @@ The code contains a lot of comments because, as this was a new experience for me
 - check details;
 - remove from favorite;
 - in profile can update name and password
+- Logout
   
 ![Login](https://github.com/user-attachments/assets/051d0a25-4da4-4dae-b696-6012b7d9608f)
 
