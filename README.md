@@ -24,6 +24,7 @@ The code contains a lot of comments because, as this was a new experience for me
 ## When NOT logged in:
 - Can see the default page, just main info about this project;
 - at Users page can see list of registered users;
+- Can check what other user's favorites;
 - Login or signup
 
 ![Logout](https://github.com/user-attachments/assets/4c165120-431c-433d-9e2d-26e709c45df9)
