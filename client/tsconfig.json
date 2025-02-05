@@ -1,16 +1,16 @@
 {
-    "compilerOptions": {
-      "target": "ES6",                  
-      "module": "ESNext",                
-      "moduleResolution": "node",        // Add this option to use Node module resolution
-      "jsx": "react-jsx",                
-      "strict": true,                    
-      "esModuleInterop": true,           
-      "skipLibCheck": true,              
-      "forceConsistentCasingInFileNames": true 
-    },
-    "include": [
-      "src/**/*"
-    ]
-  }
-  
+  "compilerOptions": {
+    "target": "ES6",                  
+    "module": "ESNext",               
+    "moduleResolution": "node",
+    "jsx": "react-jsx",               
+    "strict": true,                   
+    "esModuleInterop": true,           
+    "skipLibCheck": true,              
+    "forceConsistentCasingInFileNames": true,
+    "types": ["vite/client", "vitest/globals"] // Add this line for Vitest globals
+  },
+  "include": [
+    "src/**/*"
+  ]
+}

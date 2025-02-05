@@ -88,16 +88,14 @@ const Auth = () => {
         setIsLoading(false);
         auth?.login(responseData.userId, responseData.token); // loggin users with token and userid that goten url
         navigate("/search"); // when logged in move to search
-      } catch (err:unknown) {
-        if(err instanceof Error)
-        {
-          setError(err.message);
-          setIsLoading(false);
+      } // Example from your code
+      catch (err: unknown) {
+        if (err instanceof Error) {
+          setError("Logging in failed, wrong credentials."); // Setting error
+        } else {
+          alert("An unknown error occurred.");
         }
-        else {
-          alert("An  unknown error occured");
-        }
-      }
+      }     
     } else {
       //When signup
       try {

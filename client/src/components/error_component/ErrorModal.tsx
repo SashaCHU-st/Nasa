@@ -13,7 +13,7 @@ const ErrorModal:React.FC<ErrorProps> = (props) => {//child component
   }
 
   return (
-    <div className="error-modal">
+    <div className="error-modal" role="alert">
       <div className="error-modal__backdrop" onClick={props.onClear}></div>
       {/* <div className="error-modal__content" onCancel={props.onClear}>JUST TRY, can be deleted e.g when clicj outside of window... */}
         <header className="error-modal__header">
