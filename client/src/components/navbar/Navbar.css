@@ -6,6 +6,8 @@
     padding: 16px;
     border-bottom: 1px solid grey;
     background-color: black;
+    z-index: 1000;
+    position: relative;
 }
 .navWr *
 {
@@ -43,6 +45,8 @@
     display: none;
     font-size: 24;
     cursor: pointer;
+    z-index: 1000;
+    position: relative;
 }
 @media screen and (max-width:768px){
     .linkWr

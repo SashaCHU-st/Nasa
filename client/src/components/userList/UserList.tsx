@@ -19,22 +19,22 @@ interface UserListProps {
 
 const UserList: React.FC<UserListProps> = ({ items, loading }) => {
   return (
-    <ul className="users-list">
+    <div className="user-list">
       {items.length === 0 && <h2 className="center">No users found</h2>}
       {loading && <LoadingSpinner asOverlay />}
-      {items.map((user) => (
-        <div key={user.id} className="user-card">
-          <UserItem
-            key={user.id}
-            id={user.id}
-            name={user.name}
-            // email={user.email}
-            favoritesCount={user.favoritesCount || 0} // fav counts or defalut 0
-            articles={user.favorites}
-          />
-        </div>
-      ))}
-    </ul>
+      <div className="user-items-container">
+        {items.map((user) => (
+          <div key={user.id} className="user-item">
+            <UserItem
+              id={user.id}
+              name={user.name}
+              favoritesCount={user.favoritesCount || 0}
+              articles={user.favorites}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 

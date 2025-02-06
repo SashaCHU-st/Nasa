@@ -1,4 +1,4 @@
-import React, { useState, createContext, useEffect, ReactNode } from "react";
+import React, { useState, createContext, ReactNode } from "react";
 
 interface AuthContextType {
   userId: string | null;
@@ -26,7 +26,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   ); // checking if storedUserLoggedInInfo equal === true, if not
   // it means that null !== true => so it will be false in this case
 
-  // // save stage accordinally
   // useEffect(() => {
   //   if (isLoggedIn) {// if it was true then it will be here
   //     localStorage.setItem("isLoggedIn", "true");
@@ -35,13 +34,21 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   //   }
   // }, [isLoggedIn]);// always reacting on chenage of logged in/out
 
+  // const login = () => {
+  //   setIsLoggedIn(true);// call when loogin when auth.login
+  // };
+
+  // const logout = () => {
+  //   setIsLoggedIn(false);
+  // };
+
 
   const login = (userId: string, token: string) => {
     setIsLoggedIn(true); // call when loogin when auth.login
     localStorage.setItem("isLoggedIn", "true");
 
-    setUserId(userId);
-    setToken(token);
+    // setUserId(userId);
+    // setToken(token);
     localStorage.setItem("userId", userId);
     localStorage.setItem("token", token);
   };
@@ -50,8 +57,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setIsLoggedIn(false);
     localStorage.setItem("isLoggedIn", "false");
     
-    setUserId(null);
-    setToken(null);
+    // setUserId(null);
+    // setToken(null);
     localStorage.removeItem("userId");
     localStorage.removeItem("token");
   };

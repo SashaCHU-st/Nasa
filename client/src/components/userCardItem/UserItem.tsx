@@ -19,18 +19,16 @@ const UserItem: React.FC<UserItemProps> = ({ id, name, favoritesCount }) => {
   };
 
   return (
-    <li className="user-item">
-      <UserCard className="user-item__content">
-        <img src={image} alt={name} className="user-item__image" />{" "}
-        {/*default image for now for everyone*/}
-        <div>
-          <h2>{name}</h2>
-          {/* <p>{email}</p> */}
-          <p>Favorites: {favoritesCount}</p>
-          <button onClick={handleViewArticles}>View Favorite Articles</button>
-        </div>
-      </UserCard>
-    </li>
+    <UserCard className="user-item__content">
+      <img src={image} alt={name} className="user-item__image" />{" "}
+      {/*default image for now for everyone*/}
+      <div>
+        <h2>{name}</h2>
+        {/* <p>{email}</p> */}
+        <p>Favorites: {favoritesCount}</p>
+        <button onClick={handleViewArticles}>View Favorite Articles</button>
+      </div>
+    </UserCard>
   );
 };
 
