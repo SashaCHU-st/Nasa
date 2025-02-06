@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
-import { AuthContext } from "../context/auth-context";
-import { NavLink} from "react-router-dom"; // Use navLink for navigation
+import { AuthContext } from "../../context/AuthContext";
+import { NavLink } from "react-router-dom"; // Use navLink for navigation
 import "./Navbar.css";
-
 
 const Navbar = () => {
   const auth = useContext(AuthContext); // get the context of authorization
@@ -12,8 +11,8 @@ const Navbar = () => {
   const toggleMenu = () => setShow((prevShow) => !prevShow);
 
   const logoutHandler = () => {
-    auth?.logout();  // loggeed out
-  //  navigate("/");   // after logout to the main page, maybe not need... fix later
+    auth?.logout(); // loggeed out
+    //  navigate("/");   // after logout to the main page, maybe not need... fix later
   };
 
   return (
@@ -35,16 +34,16 @@ const Navbar = () => {
         )}
         {auth?.isLoggedIn && (
           <>
-            <NavLink to="/search" onClick={toggleMenu}> 
+            <NavLink to="/search" onClick={toggleMenu}>
               Search
             </NavLink>
             <NavLink to="/favorites" onClick={toggleMenu}>
               My Favorites
             </NavLink>
-            <NavLink to="/profile" onClick={toggleMenu}> 
+            <NavLink to="/profile" onClick={toggleMenu}>
               Profile
             </NavLink>
-            <NavLink to="/" onClick={logoutHandler}> 
+            <NavLink to="/" onClick={logoutHandler}>
               Logout
             </NavLink>
           </>

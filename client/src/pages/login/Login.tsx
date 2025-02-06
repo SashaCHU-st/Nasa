@@ -1,7 +1,7 @@
 ///Page for login/signup users
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../components/context/auth-context";
+import { AuthContext } from "../../context/AuthContext";
 import {
   VALIDATOR_EMAIL,
   VALIDATOR_MINLENGTH,
@@ -21,13 +21,14 @@ const Auth = () => {
   const [isLoginMode, setIsLoginMode] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-    const [formValidity, setFormValidity] = useState({
-      name: false,
-      email:false,
-      password: false,
-    });
-  const [formState, inputHandler, setFormData] = useForm(// custom one for following validity on each step
-  // and hadle differrnt actions such change_input and set_form
+  const [formValidity, setFormValidity] = useState({
+    name: false,
+    email: false,
+    password: false,
+  });
+  const [formState, inputHandler, setFormData] = useForm(
+    // custom one for following validity on each step
+    // and hadle differrnt actions such change_input and set_form
     {
       email: { value: "", isValid: false },
       password: { value: "", isValid: false },
@@ -36,12 +37,13 @@ const Auth = () => {
   ); //// = state
 
   const switchModeHandler = () => {
-    if (!isLoginMode) {// if it is registartion
+    if (!isLoginMode) {
+      // if it is registartion
       // set to LOGIN mode
       setFormData(
         {
           ...formState.inputs, // save current fields
-          name: {value:"",isValid:false}, // Remove the name field in LOGIN mode
+          name: { value: "", isValid: false }, // Remove the name field in LOGIN mode
         },
         formState.inputs.email.isValid && formState.inputs.password.isValid // and check if it is field are valid
       );
@@ -58,10 +60,10 @@ const Auth = () => {
         false // Reset form validity
       );
     }
-    setIsLoginMode((prevMode) => !prevMode);//changing mode
+    setIsLoginMode((prevMode) => !prevMode); //changing mode
   };
 
-  const authSubmitHandler = async (event:React.FormEvent<HTMLFormElement>) => {
+  const authSubmitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsLoading(true);
 
@@ -88,14 +90,14 @@ const Auth = () => {
         setIsLoading(false);
         auth?.login(responseData.userId, responseData.token); // loggin users with token and userid that goten url
         navigate("/search"); // when logged in move to search
-      } // Example from your code
-      catch (err: unknown) {
+      } catch (err: unknown) {
+        // Example from your code
         if (err instanceof Error) {
           setError("Logging in failed, wrong credentials."); // Setting error
         } else {
           alert("An unknown error occurred.");
         }
-      }     
+      }
     } else {
       //When signup
       try {
@@ -118,13 +120,11 @@ const Auth = () => {
         localStorage.setItem("userId", responseData.userId);
         auth?.login(responseData.userId, responseData.token); // loggin users with token and userid that goten url, neede for latwr add to favorite/delte/update
         navigate("/search"); // sending to search page
-      } catch (err:unknown) {
-        if(err instanceof Error)
-        {
+      } catch (err: unknown) {
+        if (err instanceof Error) {
           setError(err.message);
           setIsLoading(false);
-        }
-        else {
+        } else {
           alert("An  unknown error occured");
         }
       }
@@ -132,7 +132,7 @@ const Auth = () => {
   };
 
   const errorHandler = () => {
-    setError("");// when parent will close it will set error to null
+    setError(""); // when parent will close it will set error to null
   };
 
   return (
@@ -177,7 +177,9 @@ const Auth = () => {
               value={formState.inputs.password.value}
               valid={formState.inputs.password.isValid}
             />
-            <button type="submit" disabled={!formState.isValid}> {/*disables while !formState.isValid*, when bacsame valid it 
+            <button type="submit" disabled={!formState.isValid}>
+              {" "}
+              {/*disables while !formState.isValid*, when bacsame valid it 
             it will switch to active*/}
               {/*if form is !isVAlid then the buttton is disabled */}
               {isLoginMode ? "LOGIN" : "SIGNUP"}

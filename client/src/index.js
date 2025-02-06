@@ -1,19 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { QueryClient, QueryClientProvider } from 'react-query';
+//import { QueryClient, QueryClientProvider } from 'react-query';
 import './index.css';
 import App from './App';
-import { AuthProvider } from "./components/context/auth-context";
+// import { AuthProvider } from "./components/context/auth-context";
 
 
-const queryClient = new QueryClient();
+//const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <AuthProvider>
-        <QueryClientProvider client={queryClient}>
+    // <AuthProvider>
+    //     <QueryClientProvider client={queryClient}>
             <App />
-        </QueryClientProvider>
-    </AuthProvider>
+    //     </QueryClientProvider>
+    // </AuthProvider>
 );
 //queryClient used for cash, sync, update, keps all requests to use it later
 //  for cah keping it prevent extra request navigate between pages for 

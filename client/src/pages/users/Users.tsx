@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import UserList from "../users/UserList";
+import UserList from "../../components/userList/UserList";
 import ErrorModal from "../../components/error_component/ErrorModal";
 import "./Users.css";
 
@@ -20,7 +20,7 @@ const Users = () => {
         const data = await response.json();
         setUsers(data.users);
       } catch (err: unknown) {
-        // unkknown will handle error types from Axios, JS, unknown
+        // unkknown will handle error types JS, unknown
         if (err instanceof Error) {
           alert(err.message);
         } else {

@@ -1,13 +1,13 @@
 import React from "react";
-import UserItem from "./UserItem";
-import LoadingSpinner from "../../components/loading/LoadingSpinner";
+import UserItem from "../userCardItem/UserItem";
+import LoadingSpinner from "../loading/LoadingSpinner";
 import "./UserList.css";
 
 interface User {
   id: string;
   name: string;
   favoritesCount: number;
-  email:string;
+  email: string;
   favorites: string[];
   // articles: string[];
 }
@@ -15,7 +15,6 @@ interface User {
 interface UserListProps {
   items: User[];
   loading: boolean;
-
 }
 
 const UserList: React.FC<UserListProps> = ({ items, loading }) => {
