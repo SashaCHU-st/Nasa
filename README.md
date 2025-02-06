@@ -123,10 +123,12 @@ npx vitest
 | Check what other users liked articles | done |
 | maximum amount of character at name, password and email, need to fix| done |
 |<span style="color:red;">**Some bugs or future feature**</span>  | 🔴 |
-| fix serach, when goes after several searches |  |
+| fix search, when goes after several searches |  |
 | for profile create new picture |  |
 | Add update, create notes for favorites |  |
 | possible add other's users favorites to mine (after login)|  |
 | when there is no picture in the article, fix the bug|  |
 | more secured passwords checks|  |
 | make more tests|  |
+| accessibility |  |
+| fix mobile version |  |
