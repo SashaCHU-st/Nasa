@@ -29,24 +29,29 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   // // save stage accordinally
   // useEffect(() => {
   //   if (isLoggedIn) {// if it was true then it will be here
+  //     localStorage.setItem("isLoggedIn", "true");
   //   } else {// then logged out
+  //     localStorage.setItem("isLoggedIn", "false");
   //   }
   // }, [isLoggedIn]);// always reacting on chenage of logged in/out
 
+
   const login = (userId: string, token: string) => {
     setIsLoggedIn(true); // call when loogin when auth.login
+    localStorage.setItem("isLoggedIn", "true");
+
     setUserId(userId);
     setToken(token);
-    localStorage.setItem("isLoggedIn", "true");
     localStorage.setItem("userId", userId);
     localStorage.setItem("token", token);
   };
 
   const logout = () => {
     setIsLoggedIn(false);
+    localStorage.setItem("isLoggedIn", "false");
+    
     setUserId(null);
     setToken(null);
-    localStorage.setItem("isLoggedIn", "false");
     localStorage.removeItem("userId");
     localStorage.removeItem("token");
   };

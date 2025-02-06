@@ -1,6 +1,6 @@
 import React from "react";
 import AppRouter from "./router/AppRouter";
-import { AuthProvider } from "./context/AuthContext";
+import { AuthProvider } from "./context/AuthProvider";
 import { QueryClientProvider, QueryClient } from "react-query";
 
 const App = () => {

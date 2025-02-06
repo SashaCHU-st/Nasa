@@ -1,7 +1,7 @@
 ///Page for login/signup users
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext } from "../../context/AuthProvider";
 import {
   VALIDATOR_EMAIL,
   VALIDATOR_MINLENGTH,
@@ -85,8 +85,8 @@ const Auth = () => {
         if (!response.ok) {
           throw new Error(responseData.message);
         }
-        localStorage.setItem("token", responseData.token);
-        localStorage.setItem("userId", responseData.userId); // needed for future add fav
+        // localStorage.setItem("token", responseData.token);
+        // localStorage.setItem("userId", responseData.userId); // needed for future add fav
         setIsLoading(false);
         auth?.login(responseData.userId, responseData.token); // loggin users with token and userid that goten url
         navigate("/search"); // when logged in move to search
@@ -116,8 +116,8 @@ const Auth = () => {
         if (!response.ok) {
           throw new Error(responseData.message);
         }
-        localStorage.setItem("token", responseData.token);
-        localStorage.setItem("userId", responseData.userId);
+        // localStorage.setItem("token", responseData.token);
+        // localStorage.setItem("userId", responseData.userId);
         auth?.login(responseData.userId, responseData.token); // loggin users with token and userid that goten url, neede for latwr add to favorite/delte/update
         navigate("/search"); // sending to search page
       } catch (err: unknown) {

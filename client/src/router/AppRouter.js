@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../context/AuthProvider";
 import Navbar from "../components/navbar/Navbar";
 import Users from "../pages/users/Users";
 import Login from "../pages/login/Login";

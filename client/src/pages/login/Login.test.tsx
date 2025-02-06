@@ -2,7 +2,7 @@ import { describe, it, vi, beforeEach } from "vitest";
 import "@testing-library/jest-dom";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext } from "../../context/AuthProvider";
 import Auth from "../login/Login";
 
 global.fetch = vi.fn(); // mock api it is not fetch in rel when testung, but checkin
