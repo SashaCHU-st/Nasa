@@ -1,6 +1,7 @@
 # Table of Contents
 
 - [About Project](#about-project)
+- [Demo](#demo)
 - [What Works Now](#what-works-now)
   - [When Not Logged In](#when-not-logged-in)
   - [When Logged In](#when-logged-in)
@@ -19,6 +20,8 @@ There are still some bugs, which I am aware of, and from time to time, I try to 
 
 The code contains a lot of comments because, as this was a new experience for me, I made notes to help myself learn and remember what each part does.
 
+# Demo
+Coming...
 
 # What works now:
 ## When NOT logged in:
