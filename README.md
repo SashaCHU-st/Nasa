@@ -140,3 +140,4 @@ npx vitest
 | make hooks|  |
 | eslint |  |
 | comments|  |
+| Add message about loading ASAP|  |
