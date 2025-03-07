@@ -54,9 +54,9 @@ interface InputProps
 //dispatch function to send actions
 const Input: React.FC<InputProps>= (props) => {
   const [inputState, dispatch] = useReducer(inputReducer, {// InputState cur.state of filed 
-    value: props.value || "",
-    isValid: props.valid || false,
-    isTouched: false,
+    value: props.value || "",//initial value
+    isValid: props.valid || false,// is valid field
+    isTouched: false,// was the filesd touched
   });
 
   const { id, onInput } = props;

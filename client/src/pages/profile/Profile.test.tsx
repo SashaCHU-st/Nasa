@@ -14,7 +14,6 @@
 //     });
 //     await waitFor(() => expect(screen.getByRole("button", { name: /Update/i })).not.toBeDisabled());
     
-//     // Fire click event on update button
 //     fireEvent.click(screen.getByRole("button", { name: /Update/i }));
 //     await waitFor(() => screen.getByText(/Profile updated successfully!/i));
 //     expect(screen.getByText(/Profile updated successfully!/i)).toBeInTheDocument();

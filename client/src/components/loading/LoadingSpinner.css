@@ -4,38 +4,35 @@
   left: 0;
   width: 100vw; 
   height: 100vh; 
-  background: rgba(0, 0, 0, 0.5); 
+  background: rgba(0, 0, 0, 0.8); /* Darker background for better readability */
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   z-index: 9999; 
 }
 
-.spinner {
-  display: inline-block;
+.loading-message {
+  font-size: 24px; /* Bigger text */
+  font-weight: bold;
+  color: white; /* White text */
+  text-align: center;
+  margin-bottom: 20px; /* Space between message and spinner */
+  z-index: 1001; /* Message is on top */
 }
 
 .lds-dual-ring {
   display: inline-block;
   width: 64px;
   height: 64px;
-}
-.lds-dual-ring:after {
-  content: " ";
-  display: block;
-  width: 46px;
-  height: 46px;
-  margin: 8px;
   border-radius: 50%;
-  border: 6px solid #fff;
-  border-color: #fff transparent #fff transparent;
-  animation: lds-dual-ring 1.2s linear infinite;
+  border: 6px solid rgba(255, 255, 255, 0.3);
+  border-top: 6px solid white;
+  animation: spin 1s linear infinite;
+  z-index: 1000; /* Spinner behind text */
 }
-@keyframes lds-dual-ring {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
