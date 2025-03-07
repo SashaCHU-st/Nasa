@@ -1,6 +1,7 @@
 # Table of Contents
 
 - [About Project](#about-project)
+- [Watch Demo](#watch-demo)
 - [What Works Now](#what-works-now)
   - [When Not Logged In](#when-not-logged-in)
   - [When Logged In](#when-logged-in)
@@ -19,6 +20,8 @@ There are still some bugs, which I am aware of, and from time to time, I try to 
 
 The code contains a lot of comments because, as this was a new experience for me, I made notes to help myself learn and remember what each part does.
 
+# Watch Demo
+[![Watch the video](https://i.vimeocdn.com/filter/overlay?src0=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1979766631-dc12e9bbcf084abbfb80d6d6f0e3f0ae97ff50b5382bfeb39c435850e53b3e2a-d_295x166&src1=http%3A%2F%2Ff.vimeocdn.com%2Fp%2Fimages%2Fcrawler_play.png)](https://vimeo.com/1054408419/fd1d62809b)
 
 # What works now:
 ## When NOT logged in:
@@ -124,6 +127,7 @@ npx vitest
 | maximum amount of character at name, password and email, need to fix| done |
 | fix mobile version | done |
 |<span style="color:red;">**Some bugs or future feature**</span>  | 🔴 |
+| Change fecth/axios to ReactQuery for better cashing  |  |
 | fix search, when goes after several searches |  |
 | for profile create new picture |  |
 | Add update, create notes for favorites |  |
@@ -133,3 +137,6 @@ npx vitest
 | make more tests|  |
 | accessibility |  |
 | fix ids |  |
+| make hooks|  |
+| eslint |  |
+| comments|  |
