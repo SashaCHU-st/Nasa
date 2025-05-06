@@ -125,7 +125,7 @@ const Card: React.FC<Cardprops> = ({ data = [] }) => {
             </button>
             {/* add to fav */}
             <button onClick={(event) => addFavHandler(item, event)}>
-              Add to mine favorite
+              Add to my favorite
             </button>
           </div>
         );
