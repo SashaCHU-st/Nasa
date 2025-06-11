@@ -126,6 +126,7 @@ npx vitest
 | Check what other users liked articles | done |
 | maximum amount of character at name, password and email, need to fix| done |
 | fix mobile version | done |
+| changed to railway hosting | done |
 |<span style="color:red;">**Some bugs or future feature**</span>  | 🔴 |
 | Change fecth/axios to ReactQuery for better cashing  |  |
 | fix search, when goes after several searches |  |
