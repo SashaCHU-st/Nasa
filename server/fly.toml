@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for nasa-gmhgbg on 2025-06-11T07:18:47Z
+# fly.toml app configuration file generated for nasa-usrkda on 2025-06-11T07:47:55Z
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'nasa-gmhgbg'
+app = 'nasa-usrkda'
 primary_region = 'arn'
 
 [build]
